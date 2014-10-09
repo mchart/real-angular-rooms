@@ -39,7 +39,8 @@ config(['$routeProvider', '$locationProvider', 'RestangularProvider',
     });
 
     $routeProvider.when('/supplement',       { 
-        templateUrl: '/domain/supplement/supplement.html'
+        templateUrl: '/domain/supplement/supplement.html',
+        controller: 'SupplementsController'
     });
 
     $routeProvider.when('/tutorial',       { 

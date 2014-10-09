@@ -4,7 +4,7 @@ exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
-        'specs/*.js'
+        'specs/suppl*.js' //testing only supplements
     ],
 
     seleniumAddress: 'http://localhost:9000',
