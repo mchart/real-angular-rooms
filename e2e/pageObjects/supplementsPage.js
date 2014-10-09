@@ -3,7 +3,7 @@ var request = require('request');
 supplementsPage = function () {
 
     this.navigate = function() {
-        browser.get('/supplement');
+        browser.get('/supplement');             //TODO Update for Supplement<b>s<b>
     };
 
     this.getNoOfSupplements = function() {
