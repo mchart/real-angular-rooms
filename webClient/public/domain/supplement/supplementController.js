@@ -1,12 +1,9 @@
-angular.module('ngRooms.domain.supplement')
+var supplementModule = angular.module('ngRooms.domain.supplement', [])
 
-    .controller('SupplementController',
-    ['$scope', '$location',
-        function($scope, $location) {
+    supplementModule.controller('SupplementController',
+    ['$scope', '$location', 'supplementService',
+        function($scope, $location, supplementService) {
 
-            $scope.supplements= [
-                { id: 1 }
-            ];
         }
     ]
 );

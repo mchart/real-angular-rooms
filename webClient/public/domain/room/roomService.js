@@ -13,6 +13,5 @@ angular.module('ngRooms.domain.room')
             remove: function (id) {
                 return restangular.one(domain, id).remove();
             }
-
         };
     }]);

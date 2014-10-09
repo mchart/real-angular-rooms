@@ -15,7 +15,16 @@ var roomView = {
     "language" : "javascript",
     "views" : {
         "all" : {
-            "map" :  "function (doc, meta) { \n if (doc.type == 'room') { \n emit(doc.id); \n } \n 	}"
+            "map" :  "function (doc, meta) { \n if (doc.type == 'room') { \n emit(doc.id); \n } \n}"
+        }
+    }
+};
+
+var supplementView = {
+    "language" : "javascript",
+    "views" : {
+        "all" : {
+            "map" :  "function (doc, meta) { \n if (doc.type == 'supplement') { \n emit(doc.id); \n } \n}"
         }
     }
 };
@@ -24,7 +33,7 @@ var userView = {
     "language" : "javascript",
     "views" : {
         "all" : {
-            "map" :  "function (doc, meta) { \n if (doc.type == 'user') { \n emit(doc.id); \n } \n 	}"
+            "map" :  "function (doc, meta) { \n if (doc.type == 'user') { \n emit(doc.id); \n } \n}"
         }
     }
 };
@@ -34,6 +43,10 @@ mainConfig.designDocuments = [
 	    name: 'roomView',
 	    content: JSON.stringify(roomView)
 	},
+    {
+        name: 'supplementView',
+        content: JSON.stringify(supplementView)
+    },
 	{
 	    name: 'userView',
 	    content: JSON.stringify(userView)
