@@ -45,8 +45,7 @@ function actionUpdate(config) {
     return action;
 }
 
-function actionDesignDocument(config) {
-    var designDoc = config.designDocument;
+function actionDesignDocument(designDoc, config) {
     var action = new AbstractCouchAction(config);
     action.method = 'PUT';
     action.uri = action.designBase + '/' + config.bucket + '/_design/' + designDoc.name;
@@ -74,20 +73,18 @@ function CouchBucket(config) {
 CouchBucket.prototype.ensureCreated = function(callback) {
     var parentThis = this;
 
-    var thenConfigureDDoc = function() {
-        parentThis.configureDesignDocument(callback);
+    var thenConfigureRoomView = function() {
+        parentThis.configureDesignDocuments(callback);
     }
 
     this.retrieve(
         function updateExisting() {
-            parentThis.update(thenConfigureDDoc);
+            parentThis.update(thenConfigureRoomView);
         },
         function createNew() {
-            parentThis.create(thenConfigureDDoc);
+            parentThis.create(thenConfigureRoomView);
         }
     );
-
-
 };
 
 CouchBucket.prototype.retrieve = function(callback, errorCallback) {
@@ -102,8 +99,13 @@ CouchBucket.prototype.update = function(callback, errorCallback) {
     performAction(actionUpdate(this.config), callback, errorCallback );
 };
 
-CouchBucket.prototype.configureDesignDocument = function(callback, errorCallback) {
-    performAction(actionDesignDocument(this.config), callback, errorCallback );
+CouchBucket.prototype.configureDesignDocuments = function(callback, errorCallback) {
+    var designDocs = this.config.designDocuments;
+    var i;
+    for (i = 0; i < designDocs.length; i++) {
+        var designDoc = designDocs[i];
+        performAction(actionDesignDocument(designDoc, this.config), callback, errorCallback );
+    }    
 };
 
 CouchBucket.prototype.flush = function(callback, errorCallback) {
