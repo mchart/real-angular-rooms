@@ -43,9 +43,14 @@ config(['$routeProvider', '$locationProvider', 'RestangularProvider',
         controller: 'SupplementsController'
     });
 
-    $routeProvider.when('/supplement',       {
-        templateUrl: '/domain/supplement/supplement.html',
-        controller: 'SupplementController'
+    $routeProvider.when('/supplements/new',       {
+        templateUrl: '/domain/supplement/supplements.html',
+        controller: 'SupplementsController'
+    });
+
+    $routeProvider.when('/supplements/edit/:id',      {
+        templateUrl: '/domain/supplement/supplements.html',
+        controller: 'SupplementsController'
     });
 
     $routeProvider.when('/tutorial',       { 

@@ -3,7 +3,7 @@ var request = require('request');
 supplementsPage = function () {
 
     this.navigate = function() {
-        browser.get('/supplement');             //TODO Update for Supplement<b>s<b>
+        browser.get('/supplements');
     };
 
     this.getNoOfSupplements = function() {
@@ -15,7 +15,7 @@ supplementsPage = function () {
     };
 
     this.removeSupplement = function() {
-        this.        me.getRoomsRow(rowNumber).$('#btnRemoveRoom').click()
+        //TODO
     }
 
 };

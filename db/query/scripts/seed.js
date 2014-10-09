@@ -19,11 +19,11 @@ db.storeRooms(rooms, function(err, result) {
 } );
 
 var supplements = [
-    { id: 1, name: "Wi-fi", price: "2.99" },
-    { id: 2, name: "Breakfast", price: "5.99" },
-    { id: 3, name: "Dinner", price: "7.99" },
-    { id: 4, name: "Sauna", price: "4.99" },
-    { id: 5, name: "Gym", price: "3.99" }];
+    { id: 6, name: "Wi-fi", price: "2.99" },
+    { id: 7, name: "Breakfast", price: "5.99" },
+    { id: 8, name: "Dinner", price: "7.99" },
+    { id: 9, name: "Sauna", price: "4.99" },
+    { id: 10, name: "Gym", price: "3.99" }];
 
 db.storeSupplement(supplements[0], function(err, result) {
     console.log(result);

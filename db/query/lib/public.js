@@ -105,7 +105,3 @@ module.exports.getSupplements = function(callbackWithSupplements) {
 module.exports.deleteSupplement = function(id, callback) {
     db.remove(id, callback);
 };
-
-module.exports.shutdown = function() {
-    db.shutdown();
-};
