@@ -14,7 +14,8 @@ mainConfig.password = 'breakfast';
 var roomView = {
     "language" : "javascript",
     "views" : {
-        "all" : {
+
+        "all" :  {          
             "map" :  "function (doc, meta) { \n if (doc.type == 'room') { \n emit(doc.id); \n } \n 	}"
         }
     }
@@ -29,6 +30,15 @@ var userView = {
     }
 };
 
+var cancellationPoliciesView = {
+    "language" : "javascript",
+    "views" : {
+        "all" : {
+            "map" :  "function (doc, meta) {\n if(doc.type === 'cancellationPolicy') emit(doc.id);\n}"
+        }
+    }
+};
+
 mainConfig.designDocuments = [
 	{
 	    name: 'roomView',
@@ -37,7 +47,11 @@ mainConfig.designDocuments = [
 	{
 	    name: 'userView',
 	    content: JSON.stringify(userView)
-	}];
+	},
+    {
+        name: 'cancellationPoliciesView',
+        content: JSON.stringify(cancellationPoliciesView)
+    }];
 
 var config = extend(true, mainConfig, privateSetup);
 
