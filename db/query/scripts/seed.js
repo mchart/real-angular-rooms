@@ -18,12 +18,28 @@ db.rooms.storeList(rooms, function(err, result) {
     db.rooms.shutdown();
 } );
 
+var supplements = [
+    { id: 6, type: 'supplement',  name: "Wi-fi",    price: "2.99" },
+    { id: 7, type: 'supplement',  name: "Breakfast",price: "5.99" },
+    { id: 8, type: 'supplement',  name: "Dinner",   price: "7.99" },
+    { id: 9, type: 'supplement',  name: "Sauna",    price: "4.99" },
+    { id: 10,type: 'supplement',  name: "Gym",      price: "3.99" }];
+
+db.supplements.store(supplements[0], function(err, result) {
+    console.log(result);
+} );
+
+db.supplements.storeList(supplements, function(err, result) {
+    console.log(result);
+    db.supplements.shutdown();
+} );
+
 var cancellationPolicies = [
-    { id: 6, type: "cancellationPolicy", name: "Flexible", description: "Full refund 1 day prior to arrival, except fees" },
-    { id: 7, type: "cancellationPolicy", name: "Moderate", description: "Full refund 5 days prior to arrival, except fees" },
-    { id: 8, type: "cancellationPolicy", name: "Strict", description: "50% refund up until 1 week prior to arrival, except fees" },
-    { id: 9, type: "cancellationPolicy", name: "Super Strict", description: "50% refund up until 30 days prior to arrival, except fees" },
-    { id: 10,type: "cancellationPolicy", name: "Long Term", description: "First month down payment, 30 day notice for lease termination" }];
+    { id: 11, type: "cancellationPolicy", name: "Flexible", description: "Full refund 1 day prior to arrival, except fees" },
+    { id: 12, type: "cancellationPolicy", name: "Moderate", description: "Full refund 5 days prior to arrival, except fees" },
+    { id: 13, type: "cancellationPolicy", name: "Strict", description: "50% refund up until 1 week prior to arrival, except fees" },
+    { id: 14, type: "cancellationPolicy", name: "Super Strict", description: "50% refund up until 30 days prior to arrival, except fees" },
+    { id: 15,type: "cancellationPolicy", name: "Long Term", description: "First month down payment, 30 day notice for lease termination" }];
 
 db.cancellationPolicies.store(cancellationPolicies[0], function(err, result) {
     console.log(result);

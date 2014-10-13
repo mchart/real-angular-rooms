@@ -12,16 +12,17 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
     $routeProvider
         .when('/', { templateUrl: '/domain/landingPage/landingPage.html' })
         .when('/analytics', { templateUrl: '/domain/analytics/analytics.html' })
+        .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html' })    
         .when('/rate', { templateUrl: '/domain/rate/rate.html' })
         .when('/supplement', { templateUrl: '/domain/supplement/supplement.html' })
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
 
         .when('/rooms', { 
-    		    templateUrl: '/domain/room/rooms.html',
-        	  controller: 'RoomsController' })
+            templateUrl: '/domain/room/rooms.html',
+            controller: 'RoomsController' })
         .when('/rooms/new', { 
-    		    templateUrl: '/domain/room/room.html',
-        	  controller: 'RoomController' })
+            templateUrl: '/domain/room/room.html',
+            controller: 'RoomController' })
         .when('/rooms/edit/:id', { 
             templateUrl: '/domain/room/room.html',
             controller: 'RoomController' })
@@ -36,6 +37,16 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
             controller: 'CancellationPolicyController'
         });
+
+        .when('/supplements', {
+            templateUrl: '/domain/supplement/supplements.html',
+            controller: 'SupplementsController' })
+        .when('/supplements/new', {
+            templateUrl: '/domain/supplement/supplement.html',
+            controller: 'SupplementController' })
+        .when('/supplements/edit/:id', {
+            templateUrl: '/domain/supplement/supplement.html',
+            controller: 'SupplementController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
     

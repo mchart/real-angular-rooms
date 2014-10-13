@@ -8,6 +8,7 @@ exports.start = function(config) {
 
     require('./rest/rooms')(server);
     require('./rest/cancellationPolicies')(server);
+    require('./rest/supplements')(server);
 	require('./rest/authentication')(server);
 
     server.listen(config.port, function() {
