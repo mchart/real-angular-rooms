@@ -36,8 +36,7 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
         .when('/cancellationPolicies/edit/:id',       { 
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
             controller: 'CancellationPolicyController'
-        });
-
+        })
         .when('/supplements', {
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
