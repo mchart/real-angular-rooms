@@ -6,16 +6,16 @@ supplementsPage = function () {
         browser.get('/supplements');
     };
 
-    this.getNoOfSupplements = function() {
-        return element.all(by.css('li')).count()
-    };
+    this.getSupplements = function() {
+        return element.all(by.repeater('supplement in supplements'))
+    }
 
-    this.getRoomsRow = function(rowNumber) {
-        return element.all(by.css('li')).row(rowNumber)
-    };
+    this.getSupplementsRow = function(row) {
+        return element(by.repeater('supplement in supplements').row(row))
+    }
 
-    this.removeSupplement = function() {
-        //TODO
+    this.removeFirstSupplement = function() {
+        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click()
     }
 
 };
