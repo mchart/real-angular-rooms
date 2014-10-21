@@ -392,6 +392,8 @@ angular.module('ngRooms.domain.room')
 We are using the <a href="https://github.com/mgonto/restangular">Restangular</a> library to fetch the data from the server.
 This library is widely used for making REST calls, it is very powerful and will make your code much simpler.
 
+<a href='https://www.parleys.com/play/535a189ee4b0c5ba17d43455/chapter1/about'>A good explanation by mgonto on how Restangular improves AngularJS</a>
+
 #### views
 
 No News Here. :)
