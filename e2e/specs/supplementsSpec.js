@@ -3,24 +3,35 @@
 var supplementsPage = require('../pageObjects/supplementsPage');
 
 describe('As a owner', function() {
+
     describe("when I go to supplements", function() {
 
+        var supplements,
+            supplementsBefore
+
         beforeEach(function () {
-            supplementsPage.navigate();
-        });
+            supplementsPage.navigate()
+            supplements = supplementsPage.getSupplements()
+            supplements.count().then(function(initialCount){
+                supplementsBefore = initialCount
+            })
+        })
 
-        it('I should see the supplements', function() {
+        it('I should be in the ngRooms.com page', function () {
+            expect(browser.getTitle()).toEqual('ngRooms.com')
+        })
 
-            expect(supplementsPage.getNoOfSupplements()).toBe(5);
+        it('I should be in the supplements page', function () {
+            expect(element(by.css('h2')).getText()).toBe('Supplements')
+        })
 
+        it('I should see 1+ supplements', function() {
+            expect(supplements.count()).toBeGreaterThan(1)
         });
 
         it('I should be able to delete supplements', function() {
-
-            var supplements = supplementsPage.getNoOfSupplements();
-            supplementsPage.removeSupplement(0);
-            expect(supplementsPage.getNoOfSupplements()).toBe(supplements-1)
-
+            supplementsPage.removeFirstSupplement()
+            expect(supplements.count()).toBe(supplementsBefore - 1)
         });
 
     });
