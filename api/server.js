@@ -3,8 +3,8 @@ var restify = require('restify');
 
 exports.start = function(config) {
     var server = restify.createServer();
-
-    server.use(restify.bodyParser())
+    server.use(restify.fullResponse());
+    server.use(restify.bodyParser());
 
     require('./rest/rooms')(server);
     require('./rest/supplements')(server);

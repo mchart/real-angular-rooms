@@ -22,20 +22,20 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             controller: 'RoomsController' })
         .when('/rooms/new', { 
             templateUrl: '/domain/room/room.html',
-            controller: 'RoomController' })
+            controller: 'RoomsController' })
         .when('/rooms/edit/:id', { 
             templateUrl: '/domain/room/room.html',
-            controller: 'RoomController' })
+            controller: 'RoomsController' })
 
         .when('/supplements', {
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
         .when('/supplements/new', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementController' })
+            controller: 'SupplementsController' })
         .when('/supplements/edit/:id', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementController' });
+            controller: 'SupplementsController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
     

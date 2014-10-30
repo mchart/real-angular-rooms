@@ -6,43 +6,45 @@ supplementsPage = function () {
 
     me.navigateToSupplements = function() {
         browser.get('/supplements');
-    }
+    };
 
     me.getTitle = function () {
         return browser.getTitle();
-    }
+    };
 
     me.getSubPage = function () {
-        return element(by.css('h2')).getText()
-    }
+        return element(by.css('h2')).getText();
+    };
 
     me.getNoOfSupplements = function () {
-        return element.all(by.repeater('supplement in supplements')).count()
-    }
+        return element.all(by.repeater('supplement in supplements')).count();
+    };
 
     me.getSupplements = function() {
-        return element.all(by.repeater('supplement in supplements'))
-    }
+        return element.all(by.repeater('supplement in supplements'));
+    };
 
     me.getSupplementsRow = function(row) {
-        return element(by.repeater('supplement in supplements').row(row))
-    }
+        return element(by.repeater('supplement in supplements').row(row));
+    };
 
     me.removeFirstSupplement = function() {
-        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click()
-    }
+        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click();
+    };
 
     me.editSupplementAtRow = function (row) {
-        var id = element(by.repeater('supplement in supplements').row(row)).element(by.binding('removeSupplement(supplement.id)'))
+        var id = element(by.repeater('supplement in supplements').row(row)).element(by.binding('removeSupplement(supplement.id)'));
+        //communicate with DB check if supplement.id = id exists
+        //update supplement with new data
+        //return true
+    };
 
-    }
-
-    me.addSupplement = function() {
-        element(by.id('btnRemoveSupplement')).click()
-
-        //this.getRoomsRow(rowNumber).$('#btnNewSupplement').click()
-
-    }
+//    me.addSupplement = function() {
+//        element(by.id('btnRemoveSupplement')).click();
+//
+//        //this.getRoomsRow(rowNumber).$('#btnNewSupplement').click();
+//
+//    };
 
 };
 
