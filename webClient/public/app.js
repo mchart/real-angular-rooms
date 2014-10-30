@@ -22,20 +22,30 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             controller: 'RoomsController' })
         .when('/rooms/new', { 
             templateUrl: '/domain/room/room.html',
-            controller: 'RoomsController' })
+            controller: 'RoomController' })
         .when('/rooms/edit/:id', { 
             templateUrl: '/domain/room/room.html',
-            controller: 'RoomsController' })
-
+            controller: 'RoomController' })
+        .when('/cancellationPolicies',       { 
+            templateUrl: '/domain/cancellationPolicy/cancellationPolicies.html',
+            controller: 'CancellationPoliciesController'})
+        .when('/cancellationPolicies/new',       { 
+            templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
+            controller: 'CancellationPolicyController'
+        })
+        .when('/cancellationPolicies/edit/:id',       { 
+            templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
+            controller: 'CancellationPolicyController'
+        })
         .when('/supplements', {
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
         .when('/supplements/new', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementsController' })
+            controller: 'SupplementController' })
         .when('/supplements/edit/:id', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementsController' });
+            controller: 'SupplementController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
     

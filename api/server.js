@@ -7,6 +7,7 @@ exports.start = function(config) {
     server.use(restify.bodyParser());
 
     require('./rest/rooms')(server);
+    require('./rest/cancellationPolicies')(server);
     require('./rest/supplements')(server);
 	require('./rest/authentication')(server);
 

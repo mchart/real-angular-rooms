@@ -4,9 +4,9 @@ var db = require('../lib/public.js');
 
 var rooms = [
     { id: 1, type: 'room', name: "Premium", address: "Barbican" },
-    { id: 2, type: 'room', name: "Hostel",  address: "Camden" },
-    { id: 3, type: 'room', name: "Hostel",  address: "Ealing" },
-    { id: 4, type: 'room', name: "B&B ",    address: "Westminster" },
+    { id: 2, type: 'room', name: "Hostel", address: "Camden" },
+    { id: 3, type: 'room', name: "Hostel", address: "Ealing" },
+    { id: 4, type: 'room', name: "B&B ", address: "Westminster" },
     { id: 5, type: 'room', name: "Premium", address: "Piccadilly" }];
 
 db.rooms.store(rooms[0], function(err, result) {
@@ -32,4 +32,20 @@ db.supplements.store(supplements[0], function(err, result) {
 db.supplements.storeList(supplements, function(err, result) {
     console.log(result);
     db.supplements.shutdown();
+} );
+
+var cancellationPolicies = [
+    { id: 11, type: "cancellationPolicy", name: "Flexible", description: "Full refund 1 day prior to arrival, except fees" },
+    { id: 12, type: "cancellationPolicy", name: "Moderate", description: "Full refund 5 days prior to arrival, except fees" },
+    { id: 13, type: "cancellationPolicy", name: "Strict", description: "50% refund up until 1 week prior to arrival, except fees" },
+    { id: 14, type: "cancellationPolicy", name: "Super Strict", description: "50% refund up until 30 days prior to arrival, except fees" },
+    { id: 15,type: "cancellationPolicy", name: "Long Term", description: "First month down payment, 30 day notice for lease termination" }];
+
+db.cancellationPolicies.store(cancellationPolicies[0], function(err, result) {
+    console.log(result);
+} );
+
+db.cancellationPolicies.storeList(cancellationPolicies, function(err, result) {
+    console.log(result);
+    db.cancellationPolicies.shutdown();
 } );
