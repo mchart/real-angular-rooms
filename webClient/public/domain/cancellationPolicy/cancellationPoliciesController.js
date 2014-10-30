@@ -1,12 +1,18 @@
-var cancellationPolicyModule = angular.module('ngRooms.domain.cancellationPolicy', []);
-
-cancellationPolicyModule.controller('CancellationPoliciesController', 
+angular.module('ngRooms.domain.cancellationPolicy', [])
+	.controller('CancellationPoliciesController',
 	['$scope', '$location', 'CancellationPolicyService', 
 	function($scope, $location, cancellationPolicyService){
 
 	$scope.populateCancellationPoliciesTable = function(){
 		cancellationPolicyService.list().then(function(data){
 			$scope.cancellationPolicies = data;
+		});
+	};
+
+	$scope.addCancellationPolicy = function() {
+		cancellationPolicyService.add($scope.name, $scope.description).then(function(){
+			$scope.populateCancellationPoliciesTable();
+			$location.path('/cancellationPolicies');
 		});
 	};
 

@@ -8,6 +8,7 @@
     "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
   ],
   "dependencies": {
+    "bunyan":"latest",
     "couchbase": "2.0.0-dp1",
     "jwt-simple": "0.2.0",
     "moment": "2.8.3",
