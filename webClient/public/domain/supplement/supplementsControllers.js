@@ -1,7 +1,8 @@
-angular.module('ngRooms.domain.supplement')
+//angular.module('ngRooms.domain.supplement')
+var supplementModule = angular.module('ngRooms.domain.supplement', [])
 
-    .controller('SupplementsController',
-    ['$scope', '$location', 'SupplementService',
+    supplementModule.controller('SupplementsController',
+    ['$scope', '$location', 'SupplementsService',
         function($scope, $location, supplementService) {
 
             $scope.populateSupplementsTable = function(id) {
@@ -22,6 +23,19 @@ angular.module('ngRooms.domain.supplement')
 
             $scope.editSupplement = function(id) {
                 $location.path( "/supplements/edit/" + id );
+            };
+
+            $scope.createNewSupplement = function(n, p) {
+//
+//                var name = $scope.ns.name;
+//                var price = $scope.ns.price;
+//                supplementService.add(name, price).then(function() {
+//                    $location.path('/supplements/');
+//                });
+                var supp = $scope.ns;
+                return supplementService.somethingElse(supp).then(function() {
+                    $location.path('/supplements');
+                });
             };
 
             $scope.populateSupplementsTable();
