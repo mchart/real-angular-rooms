@@ -23,7 +23,7 @@ module.exports = function(server){
 
     server.post('/supplements', function (req, res, next) {
         var supplement = { id: req.params.id, type: req.params.type, name: req.params.name, price: req.params.price };
-        db.supplements.store(StoreMode.Add, supplement, function(err, result) {
+        db.supplements.store(supplement, function(err, result) {
             if (err) throw err;
             console.log(result);
             res.send(200, supplement);

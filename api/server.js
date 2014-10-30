@@ -9,7 +9,7 @@ exports.start = function(config) {
     require('./rest/rooms')(server);
     require('./rest/cancellationPolicies')(server);
     require('./rest/supplements')(server);
-	require('./rest/authentication')(server);
+    require('./rest/authentication')(server);
 
     server.listen(config.port, function() {
         console.log('%s listening at %s', server.name, server.url);
