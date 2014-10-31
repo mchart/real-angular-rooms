@@ -11,7 +11,7 @@ module.exports = function(server){
     });
 
     server.del('/rooms/:id', function (req, res, next) {
-        var id = parseInt(req.params.id);
+        var id = req.params.id;
 
         db.rooms.delete(id, function() {
             res.send();

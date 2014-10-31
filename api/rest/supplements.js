@@ -1,6 +1,7 @@
 'use strict';
 
 var db = require('rooms-db-query');
+var Guid = require('guid');
 
 module.exports = function(server){
     server.supplements = {};
@@ -13,7 +14,7 @@ module.exports = function(server){
     });
 
     server.del('/supplements/:id', function (req, res, next) {
-        var id = parseInt(req.params.id);
+        var id = req.params.id;
 
         db.supplements.delete(id, function() {
             res.send();
@@ -22,7 +23,8 @@ module.exports = function(server){
     });
 
     server.post('/supplements', function (req, res, next) {
-        var supplement = { id: req.params.id, type: req.params.type, name: req.params.name, price: req.params.price };
+        var sid = Guid.create();
+        var supplement = { id: sid, type: req.params.type, name: req.params.name, price: req.params.price };
         db.supplements.store(supplement, function(err, result) {
             if (err) throw err;
             console.log(result);

@@ -5,7 +5,8 @@
     "author": "Matt Davies",
     "contributors": [
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
-        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>",
+        "Ramon Antunez <ramon.antunez@valtech.co.uk>"
     ],
     "dependencies": {
         "couchbase": "2.0.0-dp1",
