@@ -32,7 +32,7 @@ module.exports = function(server){
         var newCancellationPolicy = {
             id: req.params.id,
             type: req.params.type,
-            name: req.params.name,w
+            name: req.params.name,
             description: req.params.description
         }
 
