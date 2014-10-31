@@ -15,6 +15,7 @@
     "request": "2.45.0",
     "restify": "2.8.2",
     "rooms-db-query": "x",
+    "guid":"latest",
     "start-stop-daemon": "0.1.0"
   },
   "scripts": {

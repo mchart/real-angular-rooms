@@ -1,6 +1,8 @@
 'use strict';
 
-var db = require('rooms-db-query');
+var db = require('rooms-db-query'),
+    Guid = require('guid');
+
 
 module.exports = function(server){
 
@@ -17,7 +19,7 @@ module.exports = function(server){
     });
 
     server.del('/cancellationPolicies/:id', function (req, res, next) {
-        var id = parseInt(req.params.id);
+        var id = req.params.id;
 
         db.cancellationPolicies.delete(id, function() {
             res.send();
@@ -30,7 +32,7 @@ module.exports = function(server){
         req.log.info({ reqparams: req.params }, 'POSTREQUESTDETAIL');
 
         var newCancellationPolicy = {
-            id: req.params.id,
+            id: Guid.create(),
             type: req.params.type,
             name: req.params.name,
             description: req.params.description

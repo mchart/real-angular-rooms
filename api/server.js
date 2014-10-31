@@ -1,6 +1,6 @@
 // set up ======================================================================
 var restify = require('restify'),
- Logger = require('bunyan');
+    Logger = require('bunyan');
 
 exports.start = function(config) {
 

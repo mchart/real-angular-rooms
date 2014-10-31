@@ -1,8 +1,9 @@
+
 angular.module('ngRooms.domain.cancellationPolicy')
 
 .factory('CancellationPolicyService', ['Restangular', function(restangular) {
 
-	var domain = 'cancellationPolicies';
+		var domain = 'cancellationPolicies';
 
 	return {
 
@@ -15,11 +16,7 @@ angular.module('ngRooms.domain.cancellationPolicy')
 		},
 
 		add: function(name, description){
-
-			var id = 1000; //TODO
-
 			var cp = {
-				id: id,
 				type: "cancellationPolicy",
 				name: name,
 				description: description
