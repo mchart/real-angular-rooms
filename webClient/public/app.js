@@ -6,34 +6,34 @@ angular.module('ngRooms', [
   'ngRooms.domain'
 ]).
 
-config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProvider',   
+config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProvider',
     function ($routeProvider, $locationProvider, $authProvider, restangularProvider) {
 
     $routeProvider
         .when('/', { templateUrl: '/domain/landingPage/landingPage.html' })
         .when('/analytics', { templateUrl: '/domain/analytics/analytics.html' })
-        .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html' })    
+        .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html' })
         .when('/rate', { templateUrl: '/domain/rate/rate.html' })
         .when('/supplement', { templateUrl: '/domain/supplement/supplement.html' })
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
 
-        .when('/rooms', { 
+        .when('/rooms', {
             templateUrl: '/domain/room/rooms.html',
             controller: 'RoomsController' })
-        .when('/rooms/new', { 
+        .when('/rooms/new', {
             templateUrl: '/domain/room/room.html',
             controller: 'RoomController' })
-        .when('/rooms/edit/:id', { 
+        .when('/rooms/edit/:id', {
             templateUrl: '/domain/room/room.html',
             controller: 'RoomController' })
-        .when('/cancellationPolicies',       { 
+        .when('/cancellationPolicies',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicies.html',
             controller: 'CancellationPoliciesController'})
-        .when('/cancellationPolicies/new',       { 
+        .when('/cancellationPolicies/new',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
             controller: 'CancellationPoliciesController'
         })
-        .when('/cancellationPolicies/edit/:id',       { 
+        .when('/cancellationPolicies/edit/:id',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
             controller: 'CancellationPoliciesController'
         })
@@ -42,18 +42,18 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             controller: 'SupplementsController' })
         .when('/supplements/new', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementController' })
+            controller: 'SupplementsController' })
         .when('/supplements/edit/:id', {
             templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementController' });
+            controller: 'SupplementsController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
-    
+
     $locationProvider.html5Mode(true);
 
     restangularProvider.setBaseUrl('/api');
 
-    $authProvider.google({      
+    $authProvider.google({
         url: 'api/auth/google',
         clientId: '279805487456-u3c7d5rpqqenunrgt2ia0p91h1198n4b.apps.googleusercontent.com'
     });

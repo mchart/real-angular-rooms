@@ -5,11 +5,13 @@
   "author": "Matt Davies=",
   "contributors": [
     "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
-    "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+    "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>",
+    "Ramon Antunez <ramon.antunez@valtech.co.uk>"
   ],
   "dependencies": {
     "bunyan":"latest",
     "couchbase": "2.0.0-dp1",
+    "guid": "0.0.12",
     "jwt-simple": "0.2.0",
     "moment": "2.8.3",
     "request": "2.45.0",
