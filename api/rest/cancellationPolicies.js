@@ -18,6 +18,15 @@ module.exports = function(server){
         });
     });
 
+    server.get('/cancellationPolicies/:id', function(req, res, next) {
+        var id = req.params.id;
+
+        db.cancellationPolicies.get(id, function(cancellationPolicy) {
+            res.send(200, cancellationPolicy);
+            return next();
+        });
+    });
+
     server.del('/cancellationPolicies/:id', function (req, res, next) {
         var id = req.params.id;
 
@@ -43,6 +52,31 @@ module.exports = function(server){
             res.send();
             return next();
         } );
+
+    });
+
+    server.put('/cancellationPolicies/:id', function(req, res, next){
+        req.log.info({ reqparams: req.params }, 'PUTREQUESTDETAIL');
+
+        var id = req.params.id;
+        var type = req.params.type;
+
+      if(Guid.isGuid(id) && type ==='cancellationPolicy'){
+
+            var cancellationPolicy = {
+                id: id,
+                type: type,
+                name: req.params.name,
+                description: req.params.description
+            }
+
+            db.cancellationPolicies.store(cancellationPolicy, function(err, result) {
+                console.log(result);
+                res.send();
+                return next();
+            } );
+        }
+
 
     });
 
