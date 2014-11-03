@@ -10,7 +10,7 @@ module.exports = function(query){
         return cancellationPolicy.id;
     };
 
-    query.cancellationPolicies.getList = function(callbackWithRooms) {
+    query.cancellationPolicies.getList = function(callbackWithCancellationPolicies) {
         var q = {
             limit: 10, 
             stale: false 
@@ -26,10 +26,33 @@ module.exports = function(query){
                     return v.value;
                 });
 
-                callbackWithRooms(cancellationPolicies);
+                callbackWithCancellationPolicies(cancellationPolicies);
             });
         });
     };
+
+    query.cancellationPolicies.get = function(id, callbackWithCancellationPolicy) {
+        var q = {
+            limit: 10,
+            stale: false
+        };
+
+        db.view("cancellationPoliciesView", "all", q).query(function(err, values) {
+            var keys = [id];
+
+            db.getMulti(keys, null, function(err, results) {
+
+                var cancellationPolicies = _.map(results, function(v, k) {
+                    v.value.id = k;
+                    return v.value;
+                });
+                var cancellationPolicy = cancellationPolicies[0];
+
+                callbackWithCancellationPolicy(cancellationPolicy);
+            });
+        });
+    };
+
 
     query.cancellationPolicies.store = function(cancellationPolicy, callback) {
         db.set(getCancellationPolicyKey(cancellationPolicy), cancellationPolicy, callback);

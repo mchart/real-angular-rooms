@@ -12,7 +12,7 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
     $routeProvider
         .when('/', { templateUrl: '/domain/landingPage/landingPage.html' })
         .when('/analytics', { templateUrl: '/domain/analytics/analytics.html' })
-        .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html' })
+        .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html' })
         .when('/rate', { templateUrl: '/domain/rate/rate.html' })
         .when('/supplement', { templateUrl: '/domain/supplement/supplement.html' })
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
@@ -30,11 +30,11 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             templateUrl: '/domain/cancellationPolicy/cancellationPolicies.html',
             controller: 'CancellationPoliciesController'})
         .when('/cancellationPolicies/new',       {
-            templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
+            templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html',
             controller: 'CancellationPoliciesController'
         })
         .when('/cancellationPolicies/edit/:id',       {
-            templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
+            templateUrl: '/domain/cancellationPolicy/editCancellationPolicy.html',
             controller: 'CancellationPoliciesController'
         })
         .when('/supplements', {

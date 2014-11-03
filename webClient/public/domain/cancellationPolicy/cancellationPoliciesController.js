@@ -1,7 +1,7 @@
 angular.module('ngRooms.domain.cancellationPolicy', [])
 	.controller('CancellationPoliciesController',
-	['$scope', '$location', 'CancellationPolicyService', 
-	function($scope, $location, cancellationPolicyService){
+	['$scope', '$routeParams','$location', 'CancellationPolicyService',
+	function($scope, $routeParams, $location, cancellationPolicyService){
 
 	$scope.populateCancellationPoliciesTable = function(){
 		cancellationPolicyService.list().then(function(data){
@@ -16,18 +16,25 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
 		});
 	};
 
-	$scope.removeCancellationPolicy = function(id){
+	$scope.editCancellationPolicy = function() {
+		cancellationPolicyService.edit($routeParams.id, $scope.name, $scope.description).then(function(){
+			$scope.populateCancellationPoliciesTable();
+			$location.path('/cancellationPolicies');
+		});
+	};
+
+		$scope.removeCancellationPolicy = function(id){
 		cancellationPolicyService.remove(id).then(function(){
 			$scope.populateCancellationPoliciesTable();
 		});
 	};
 
-	$scope.newCancellationPolicy = function(){
+	$scope.navigateToNavigationPoliciesNew = function(){
 		$location.path('/cancellationPolicies/new');
 	}
 
 
-	$scope.editCancellationPolicy= function(id){
+	$scope.navigateToNavigationPoliciesEdit = function(id){
 		$location.path('/cancellationPolicies/edit/' + id);
 	}
 

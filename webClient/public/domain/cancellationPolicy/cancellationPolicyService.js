@@ -23,8 +23,16 @@ angular.module('ngRooms.domain.cancellationPolicy')
 			}
 
 			return restangular.all(domain + '/new').post(cp);
-		}
+		},
 
+		edit: function(id, name, description){
+
+			return restangular.one(domain, id).get().then(function(cancellationPolicy) {
+				cancellationPolicy.name = name;
+				cancellationPolicy.description = description;
+				 return cancellationPolicy.put();
+			});
+		}
 	};
 
 }]);
