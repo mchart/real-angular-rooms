@@ -13,15 +13,6 @@ module.exports = function(server){
         });
     });
 
-    server.del('/supplements/:id', function (req, res, next) {
-        var id = req.params.id;
-
-        db.supplements.delete(id, function() {
-            res.send();
-            return next();
-        });
-    });
-
     server.post('/supplements', function (req, res, next) {
         var sid = Guid.create();
         var supplement = { id: sid, type: req.params.type, name: req.params.name, price: req.params.price };
@@ -31,5 +22,40 @@ module.exports = function(server){
             res.send(200, supplement);
             return next();
         });
+    });
+
+    server.del('/supplements/:id', function (req, res, next) {
+        var id = req.params.id;
+
+        db.supplements.delete(id, function() {
+            res.send();
+            return next();
+        });
+    });
+
+    server.get('supplements/:id', function (req, res, next) {
+        var id = req.params.id;
+        db.supplements.getSupplement(id, function(supplements) {
+            res.send(200, supplements);
+            return next();
+        });
+    });
+
+    server.put('/supplements/:id', function (req, res, next) {
+        var id = req.params.id;
+        var supplement = { id: id, type: req.params.type, name: req.params.name, price: req.params.price };
+        db.supplements.getSupplement(id, function(err, result){
+            if (err) throw err;
+            console.log(result);
+
+            db.supplements.replace(id, supplement, function(err, result) {
+                if (err) throw err;
+                console.log(result);
+                //res.send(200, supplement);
+                res.end(JSON.stringify(data));
+
+            });
+        });
+        return next();
     });
 };

@@ -10,6 +10,10 @@ module.exports = function(query){
         return supplement.id;
     };
 
+    query.supplements.getSupplement = function(supplementId, callback) {
+        db.get(supplementId, callback);
+    };
+
     query.supplements.getList = function(callbackWithSupplements) {
         var q = {
             limit: 10,
