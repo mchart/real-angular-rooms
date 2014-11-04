@@ -3,6 +3,10 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
     ['$scope', '$routeParams','$location', 'CancellationPolicyService',
         function($scope, $routeParams, $location, cancellationPolicyService){
 
+            $scope.populateSingleCancellationPolicy = function(id){
+                
+            };
+
             $scope.addCancellationPolicy = function() {
                 cancellationPolicyService.add($scope.name, $scope.description).then(function(){
                     $scope.populateCancellationPoliciesTable();
@@ -16,4 +20,6 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
                     $location.path('/cancellationPolicies');
                 });
             };
+
+            $scope.populateSingleCancellationPolicy($routeParams.id);
         }]);
