@@ -31,7 +31,7 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             controller: 'CancellationPoliciesController'})
         .when('/cancellationPolicies/new',       {
             templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html',
-            controller: 'CancellationPoliciesController'
+            controller: 'CancellationPolicyController'
         })
         .when('/cancellationPolicies/edit/:id',       {
             templateUrl: '/domain/cancellationPolicy/editCancellationPolicy.html',

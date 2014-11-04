@@ -9,21 +9,7 @@ angular.module('ngRooms.domain.cancellationPolicies', [])
 		});
 	};
 
-	$scope.addCancellationPolicy = function() {
-		cancellationPolicyService.add($scope.name, $scope.description).then(function(){
-			$scope.populateCancellationPoliciesTable();
-			$location.path('/cancellationPolicies');
-		});
-	};
-
-	$scope.editCancellationPolicy = function() {
-		cancellationPolicyService.edit($routeParams.id, $scope.name, $scope.description).then(function(){
-			$scope.populateCancellationPoliciesTable();
-			$location.path('/cancellationPolicies');
-		});
-	};
-
-		$scope.removeCancellationPolicy = function(id){
+	$scope.removeCancellationPolicy = function(id){
 		cancellationPolicyService.remove(id).then(function(){
 			$scope.populateCancellationPoliciesTable();
 		});
