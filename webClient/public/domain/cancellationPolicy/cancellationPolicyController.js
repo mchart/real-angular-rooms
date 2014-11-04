@@ -4,7 +4,11 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
         function($scope, $routeParams, $location, cancellationPolicyService){
 
             $scope.populateSingleCancellationPolicy = function(id){
-                return;
+
+                    cancellationPolicyService.single(id).then(function(data){
+                        $scope.cancellationPolicy = data;
+                    });
+
             };
 
             $scope.addCancellationPolicy = function() {

@@ -32,6 +32,10 @@ angular.module('ngRooms.domain.cancellationPolicy')
 				cancellationPolicy.description = description;
 				 return cancellationPolicy.put();
 			});
+		},
+
+		single: function(id){
+			return restangular.one(domain, id).get();
 		}
 	};
 
