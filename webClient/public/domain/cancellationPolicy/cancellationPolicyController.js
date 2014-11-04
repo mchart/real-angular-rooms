@@ -18,7 +18,7 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
             };
 
             $scope.editCancellationPolicy = function() {
-                cancellationPolicyService.edit($routeParams.id, $scope.name, $scope.description).then(function(){
+                cancellationPolicyService.edit($routeParams.id, $scope.cancellationPolicy.name, $scope.cancellationPolicy.description).then(function(){
                     $location.path('/cancellationPolicies');
                 });
             };
