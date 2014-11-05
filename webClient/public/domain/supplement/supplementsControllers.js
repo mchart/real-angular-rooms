@@ -20,15 +20,6 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
                 $location.path( "/supplements/new" );
             };
 
-            $scope.openSupplement = function(id) {
-                supplementService.open(id).then(function(supplement) {
-                    debugger;
-                    $scope.es.name = supplement.name;
-                    $scope.es.price = supplement.price;
-                });
-                $location.path( "/supplements/edit/" + id );
-            };
-
             $scope.createNewSupplement = function() {
                 var supp = {};
                 supp.type = 'supplement';
@@ -37,6 +28,14 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
                 supplementService.add(supp).then(function() {
                     $location.path('/supplements');
                 });
+            };
+
+            $scope.editSupplement = function(id) {
+                supplementService.getSingle(id).then(function(supplement) {
+                    $scope.es.name = supplement.name;
+                    $scope.es.price = supplement.price;
+                });
+                $location.path( "/supplements/edit/" + id );
             };
 
             $scope.populateSupplementsTable();

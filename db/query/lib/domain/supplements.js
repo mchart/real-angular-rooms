@@ -10,9 +10,17 @@ module.exports = function(query){
         return supplement.id;
     };
 
-    query.supplements.getSupplement = function(supplementId, callback) {
-        debugger;
-        db.get(supplementId, callback);
+    query.supplements.getSingle = function(id, res) {
+        db.get(id, function(err, result) {
+            var supplement = result.value;
+            console.log('nelk  ' +
+                ' ' + supplement.id +
+                ' ' + supplement.type +
+                ' ' + supplement.name +
+                ' ' + supplement.price +
+                ' ');
+            return supplement;
+        });
     };
 
     query.supplements.getList = function(callbackWithSupplements) {

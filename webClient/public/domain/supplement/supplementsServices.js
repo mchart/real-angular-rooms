@@ -19,8 +19,8 @@ angular.module('ngRooms.domain.supplement')
                 supplement.price = supp.price;
                 return restangular.all(domain).post(supplement);
             },
-            open: function(id){
-                return restangular.all(domain, id).get(id);
+            getSingle: function(id){
+                return restangular.one(domain, id).get();
             }
 //            edit: function(supp){
 //                var supplement = {};

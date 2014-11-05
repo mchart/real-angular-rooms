@@ -35,8 +35,12 @@ module.exports = function(server){
 
     server.get('supplements/:id', function (req, res, next) {
         var id = req.params.id;
-        db.supplements.getSupplement(id, function(supplements) {
-            res.send(200, supplements);
+        db.supplements.getSingle(id, function(supplement) {
+            if( supplement === undefined ) {
+                res.send(404);
+            } else {
+                res.send(200, supplement);
+            }
             return next();
         });
     });
