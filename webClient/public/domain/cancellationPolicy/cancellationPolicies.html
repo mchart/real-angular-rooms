@@ -15,7 +15,7 @@
       <td>{{ cancellationPolicy.name }}</td>
       <td>{{ cancellationPolicy.description }}</td>
       <td>
-        <a ng-click="editCancellationPolicy(cancellationPolicy.id)" id="btnEditCancellationPolicy" class="btn btn-primary" href="#">
+        <a ng-click="navigateToNavigationPoliciesEdit(cancellationPolicy.id)" id="btnEditCancellationPolicy" class="btn btn-primary" href="#">
           <i class="glyphicon glyphicon-pencil"></i>
         </a>
         
@@ -27,6 +27,6 @@
   </tbody>
 </table>
 
-<a ng-click="newCancellationPolicy()" id="btnNewCancellationPolicy" class="btn btn-primary" href="#">
+<a ng-click="navigateToNavigationPoliciesNew()" id="btnNewCancellationPolicy" class="btn btn-primary" href="#">
   <i class="glyphicon glyphicon-plus"></i>
 </a>  

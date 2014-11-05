@@ -1,0 +1,25 @@
+<h2>Edit Cancellation Policy</h2>
+<form ng-controller="CancellationPolicyController">
+    <table class="table table-striped table-hover" >
+        <thead>
+        <tr>
+            <th class="col-md-1">Id</th>
+            <th class="col-md-4">Name</th>
+            <th class="col-md-5">Description</th>
+            <th class="col-md-2"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{cancellationPolicy.id}}</td>
+            <td><input type="text" ng-model="cancellationPolicy.name" required></td>
+            <td><input type="text" ng-model="cancellationPolicy.description" required></td>
+            <td>
+                <a ng-click="editCancellationPolicy()" id="btnEditCancellationPolicy" class="btn btn-primary" href="#/">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
