@@ -12,10 +12,10 @@ module.exports = function(query){
 
     query.cancellationPolicies.getList = function(callbackWithCancellationPolicies) {
         var q = {
-            limit: 10, 
-            stale: false 
+            limit: 10,
+            stale: false
         };
-        
+
         db.view("cancellationPoliciesView", "all", q).query(function(err, values) {
             var keys = _.pluck(values, 'id');
 
@@ -32,24 +32,8 @@ module.exports = function(query){
     };
 
     query.cancellationPolicies.get = function(id, callbackWithCancellationPolicy) {
-        var q = {
-            limit: 10,
-            stale: false
-        };
-
-        db.view("cancellationPoliciesView", "all", q).query(function(err, values) {
-            var keys = [id];
-
-            db.getMulti(keys, null, function(err, results) {
-
-                var cancellationPolicies = _.map(results, function(v, k) {
-                    v.value.id = k;
-                    return v.value;
-                });
-                var cancellationPolicy = cancellationPolicies[0];
-
-                callbackWithCancellationPolicy(cancellationPolicy);
-            });
+        db.get(id, function (err, result) {
+            callbackWithCancellationPolicy(result.value);
         });
     };
 
