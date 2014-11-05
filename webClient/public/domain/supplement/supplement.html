@@ -12,10 +12,10 @@
         <tbody>
         <tr>
             <td></td>
-            <td><input type="text" name="name" ng-model="ns.name" required></td>
-            <td><input type="number" name="price" ng-model="ns.price" min="0" max="999"required></td>
+            <td><input id="name" type="text" ng-model="ns.name" required> {{ es.name }}</td>
+            <td><input id="price" type="number" ng-model="ns.price" min="0" max="999"required> {{ es.price }}</td>
             <td>
-                <a ng-click="createNewSupplement(supplementForm.name, supplementForm.price)" id="btnSaveNewSupplement" class="btn btn-primary" href="#/">
+                <a ng-click="createNewSupplement()" id="btnSaveNewSupplement" class="btn btn-primary" href="#/">
                     <i class="glyphicon glyphicon-plus"></i>
                 </a>
             </td>

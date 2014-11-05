@@ -11,6 +11,7 @@ module.exports = function(query){
     };
 
     query.supplements.getSupplement = function(supplementId, callback) {
+        debugger;
         db.get(supplementId, callback);
     };
 

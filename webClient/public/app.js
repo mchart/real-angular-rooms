@@ -31,12 +31,10 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             controller: 'CancellationPoliciesController'})
         .when('/cancellationPolicies/new',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
-            controller: 'CancellationPolicyController'
-        })
+            controller: 'CancellationPolicyController'})
         .when('/cancellationPolicies/edit/:id',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html',
-            controller: 'CancellationPolicyController'
-        })
+            controller: 'CancellationPolicyController'})
         .when('/supplements', {
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
