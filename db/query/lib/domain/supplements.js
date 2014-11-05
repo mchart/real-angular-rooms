@@ -10,8 +10,8 @@ module.exports = function(query){
         return supplement.id;
     };
 
-    query.supplements.getSingle = function(id, res) {
-        db.get(id, function(err, result) {
+    query.supplements.getSingle = function(id, callback) {
+        return db.get(id, function(err, result) {
             var supplement = result.value;
             console.log('nelk  ' +
                 ' ' + supplement.id +

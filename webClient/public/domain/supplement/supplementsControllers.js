@@ -31,7 +31,11 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
             };
 
             $scope.editSupplement = function(id) {
+                var aux2 = supplementService.getSingle(id)
+                aux2.name = 'wtf';
                 supplementService.getSingle(id).then(function(supplement) {
+                    var aux = supplement;
+                    aux.name = 'testing'
                     $scope.es.name = supplement.name;
                     $scope.es.price = supplement.price;
                 });
