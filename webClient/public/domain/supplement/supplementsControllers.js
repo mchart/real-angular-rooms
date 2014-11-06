@@ -23,10 +23,6 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
             };
 
             $scope.gotoEditSupplement = function(id) {
-                supplementService.single(id).then(function(supplement) {
-                    $scope.name = supplement.name;
-                    $scope.price = supplement.price;
-                });
                 $location.path( "/supplements/edit/" + id );
             };
 
@@ -34,11 +30,32 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
 //            addSupplement.html
 
             $scope.newSupplement = function() {
-                var supp = {};
-                supp.type = 'supplement';
-                supp.name = $scope.ns.name;
-                supp.price = $scope.ns.price;
-                supplementService.add(supp).then(function() {
+                var supplement = {
+                    name : $scope.ns.name,
+                    price : $scope.ns.price
+                };
+                supplementService.add(supplement).then(function() {
+                    $scope.ns = {};
+                    $location.path('/supplements');
+                });
+            };
+
+
+//            editSupplement.html
+
+            $scope.populateSingleSupplement = function() {
+                supplementService.single(id).then(function(supplement) {
+                    $scope.es = supplement;
+                });
+            };
+
+            $scope.editSupplement = function() {
+                var supplement = {
+                    name : $scope.es.name,
+                    price : $scope.es.price
+                };
+                supplementService.edit($routeParams.id, supplement).then(function(){
+                    $scope.es = {};
                     $location.path('/supplements');
                 });
             };
@@ -46,7 +63,14 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
 
 //            supplements.html
 
-            $scope.populateSupplementsTable();
+//            if ($location === '/supplements'){
+                $scope.populateSupplementsTable();
+//            } else if ($location === '/supplements/edit/') {
+//                $scope.populateSingleSupplement($routeParams.id);
+//            }
+
+
+
         }
     ]
 );

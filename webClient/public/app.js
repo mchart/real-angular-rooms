@@ -14,7 +14,6 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
         .when('/analytics', { templateUrl: '/domain/analytics/analytics.html' })
         .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html' })
         .when('/rate', { templateUrl: '/domain/rate/rate.html' })
-        .when('/supplement', { templateUrl: '/domain/supplement/supplement.html' })
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
 
         .when('/rooms', {

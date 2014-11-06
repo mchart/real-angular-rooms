@@ -12,22 +12,21 @@ angular.module('ngRooms.domain.supplement')
             remove: function (id) {
                 return restangular.one(domain, id).remove();
             },
-            add: function(supp){
-                var supplement = {};
-                supplement.type = supp.type;
-                supplement.name = supp.name;
-                supplement.price = supp.price;
+            add: function(supplement){
                 return restangular.all(domain).post(supplement);
             },
             single: function(id){
                 return restangular.one(domain, id).get();
+            },
+            edit: function(id, supplement){
+                return restangular.one(domain, id).put(supplement);
             }
-//            edit: function(supp){
-//                var supplement = {};
-//                supplement.type = supp.type;
-//                supplement.name = supp.name;
-//                supplement.price = supp.price;
-//                return restangular.all(domain, id).put(supplement);
+//            edit: function(id, supplement){
+//                return restangular.one(domain, id).get().then(function(data) {
+//                    data.name = supplement.name;
+//                    data.price = supplement.price;
+//                    return data.put();
+//                });
 //            }
         };
     }]);
