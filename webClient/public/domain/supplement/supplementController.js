@@ -1,7 +1,7 @@
 var supplementModule = angular.module('ngRooms.domain.supplement.supplementController', [])
 
 supplementModule.controller('SupplementController',
-    ['$scope', '$location', 'SupplementsService',
+    ['$scope', '$location', 'SupplementService',
         function($scope, $location, supplementService) {
 
             $scope.newSupplement = function () {

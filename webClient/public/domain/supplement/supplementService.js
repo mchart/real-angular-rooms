@@ -1,6 +1,6 @@
 angular.module('ngRooms.domain.supplement')
 
-    .factory('SupplementsService', ['Restangular', function (restangular) {
+    .factory('SupplementService', ['Restangular', function (restangular) {
 
         var domain = 'supplements';
 
