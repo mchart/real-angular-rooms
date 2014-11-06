@@ -41,10 +41,10 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
         .when('/supplements/new', {
-            templateUrl: '/domain/supplement/supplement.html',
+            templateUrl: '/domain/supplement/addSupplement.html',
             controller: 'SupplementsController' })
         .when('/supplements/edit/:id', {
-            templateUrl: '/domain/supplement/supplement.html',
+            templateUrl: '/domain/supplement/editSupplement.html',
             controller: 'SupplementsController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
