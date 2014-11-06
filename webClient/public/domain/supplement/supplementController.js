@@ -31,4 +31,9 @@ supplementModule.controller('SupplementController',
                     $location.path('/supplements');
                 });
             };
-        }]);
+
+            $scope.populateSingleSupplement($routeParams.id);
+
+        }
+    ]
+);
