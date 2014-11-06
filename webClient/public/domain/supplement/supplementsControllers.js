@@ -4,6 +4,9 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
     ['$scope', '$location', 'SupplementsService',
         function($scope, $location, supplementService) {
 
+
+//            supplements.html
+
             $scope.populateSupplementsTable = function() {
                 supplementService.list().then(function(data) {
                     $scope.supplements = data;
@@ -20,6 +23,17 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
                 $location.path( "/supplements/new" );
             };
 
+            $scope.editSupplement = function(id) {
+                supplementService.getSingle(id).then(function(supplement) {
+                    $scope.name = supplement.name;
+                    $scope.price = supplement.price;
+                });
+                $location.path( "/supplements/edit/" + id );
+            };
+
+
+//            addSupplement.html
+
             $scope.createNewSupplement = function() {
                 var supp = {};
                 supp.type = 'supplement';
@@ -30,17 +44,8 @@ var supplementModule = angular.module('ngRooms.domain.supplement', [])
                 });
             };
 
-            $scope.editSupplement = function(id) {
-                var aux2 = supplementService.getSingle(id)
-                aux2.name = 'wtf';
-                supplementService.getSingle(id).then(function(supplement) {
-                    var aux = supplement;
-                    aux.name = 'testing'
-                    $scope.es.name = supplement.name;
-                    $scope.es.price = supplement.price;
-                });
-                $location.path( "/supplements/edit/" + id );
-            };
+
+//            supplements.html
 
             $scope.populateSupplementsTable();
         }
