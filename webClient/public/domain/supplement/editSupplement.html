@@ -1,5 +1,5 @@
 <h2>Supplement</h2>
-<form name="supplementForm">
+<form ng-controller="SupplementController">
     <table class="table table-striped table-hover" >
         <thead>
         <tr>
@@ -12,8 +12,8 @@
         <tbody>
         <tr>
             <td></td>
-            <td><input id="name" type="text" ng-model="es.name" required> {{ es.name }}</td>
-            <td><input id="price" type="number" ng-model="es.price" required> {{ es.price }}</td>
+            <td><input id="name" type="text" ng-model="es.name" required></td>
+            <td><input id="price" type="number" ng-model="es.price" required></td>
             <td>
                 <a ng-click="editSupplement()" id="btnSaveNewSupplement" class="btn btn-primary" href="#/">
                     <i class="glyphicon glyphicon-plus"></i>

@@ -46,19 +46,12 @@ module.exports = function(server){
     });
 
     server.put('/supplements/:id', function (req, res, next) {
-        var id = req.params.id;
-        var supplement = { id: id, type: req.params.type, name: req.params.name, price: req.params.price };
-        db.supplements.getSupplement(id, function(err, result){
+        var sid = req.params.id;
+        var supplement = { id: sid, type: req.params.type, name: req.params.name, price: req.params.price };
+        db.supplements.store(supplement, function(err, result) {
             if (err) throw err;
             console.log(result);
-
-            db.supplements.replace(id, supplement, function(err, result) {
-                if (err) throw err;
-                console.log(result);
-                //res.send(200, supplement);
-                res.end(JSON.stringify(data));
-
-            });
+            res.send(200, supplement);
         });
         return next();
     });

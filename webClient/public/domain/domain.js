@@ -3,5 +3,6 @@ angular.module('ngRooms.domain', [
   'ngRooms.domain.room',
   'ngRooms.domain.cancellationPolicy',
   'ngRooms.domain.cancellationPolicies',
+  'ngRooms.domain.supplements',
   'ngRooms.domain.supplement'
 ]);
