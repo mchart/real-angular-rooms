@@ -2,9 +2,9 @@
 
 var supplementsPage = require('../pageObjects/supplements.po');
 
-describe('As a owner', function() {
+describe('As an owner as I navigate to supplements', function() {
 
-    describe("when I go to supplements", function() {
+    describe("when I go to supplements I should", function() {
 
         var supplements,
             supplementsBefore;
@@ -17,30 +17,34 @@ describe('As a owner', function() {
             })
         });
 
-        it('I should be in the supplements page', function () {
+        it('be in the supplements page', function () {
             expect(supplementsPage.getSubPage()).toBe('Supplements');
         });
 
-        it('I should see 1+ supplements', function () {
+        it('see 1+ supplements', function () {
             expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(1);
         });
 
-        it('I should be able to delete supplements', function () {
+        it('be able to delete supplements', function () {
             supplementsPage.removeFirstSupplement()
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
         });
 
-        it('I should be able to add supplements', function () {
+        it('be able to add supplements', function () {
             supplementsPage.addSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-        it('I should be able to open a supplement', function () {
+        it('be able to open a supplement', function () {
             supplementsPage.openFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-//        it('If I choose to edit a supplement I should see its details in the next screen', function () {
+//        it('see details of a supplement if I choose to edit it', function () {
+//            expect(supplementsPage.accessFirstSupplement()).toBe(true);
+//        });
+
+//        it('see the supplement has been edited and saved if I edited its details', function () {
 //            expect(supplementsPage.accessFirstSupplement()).toBe(true);
 //        });
 
