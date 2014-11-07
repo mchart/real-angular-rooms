@@ -11,7 +11,7 @@ module.exports = function(query){
     };
 
     query.supplements.getSingle = function(id, callback) {
-        return db.get(id, function(err, result) {
+         db.get(id, function(err, result) {
             var supplement = result.value;
             console.log('nelk  ' +
                 ' ' + supplement.id +
@@ -19,7 +19,7 @@ module.exports = function(query){
                 ' ' + supplement.name +
                 ' ' + supplement.price +
                 ' ');
-            return supplement;
+            callback(supplement);
         });
     };
 
