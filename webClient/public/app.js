@@ -14,7 +14,6 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
         .when('/analytics', { templateUrl: '/domain/analytics/analytics.html' })
         .when('/cancellationPolicy', { templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html' })
         .when('/rate', { templateUrl: '/domain/rate/rate.html' })
-        .when('/supplement', { templateUrl: '/domain/supplement/supplement.html' })
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
 
         .when('/rooms', {
@@ -26,26 +25,26 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
         .when('/rooms/edit/:id', {
             templateUrl: '/domain/room/room.html',
             controller: 'RoomController' })
+
         .when('/cancellationPolicies',       {
             templateUrl: '/domain/cancellationPolicy/cancellationPolicies.html',
             controller: 'CancellationPoliciesController'})
         .when('/cancellationPolicies/new',       {
             templateUrl: '/domain/cancellationPolicy/addCancellationPolicy.html',
-            controller: 'CancellationPolicyController'
-        })
+            controller: 'CancellationPolicyController' })
         .when('/cancellationPolicies/edit/:id',       {
             templateUrl: '/domain/cancellationPolicy/editCancellationPolicy.html',
-            controller: 'CancellationPolicyController'
-        })
+            controller: 'CancellationPolicyController' })
+
         .when('/supplements', {
             templateUrl: '/domain/supplement/supplements.html',
             controller: 'SupplementsController' })
         .when('/supplements/new', {
-            templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementsController' })
+            templateUrl: '/domain/supplement/addSupplement.html',
+            controller: 'SupplementController' })
         .when('/supplements/edit/:id', {
-            templateUrl: '/domain/supplement/supplement.html',
-            controller: 'SupplementsController' });
+            templateUrl: '/domain/supplement/editSupplement.html',
+            controller: 'SupplementController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
 

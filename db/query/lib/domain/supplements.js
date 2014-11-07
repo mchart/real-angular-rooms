@@ -10,6 +10,19 @@ module.exports = function(query){
         return supplement.id;
     };
 
+    query.supplements.getSingle = function(id, callback) {
+         db.get(id, function(err, result) {
+            var supplement = result.value;
+            console.log('nelk  ' +
+                ' ' + supplement.id +
+                ' ' + supplement.type +
+                ' ' + supplement.name +
+                ' ' + supplement.price +
+                ' ');
+            callback(supplement);
+        });
+    };
+
     query.supplements.getList = function(callbackWithSupplements) {
         var q = {
             limit: 10,

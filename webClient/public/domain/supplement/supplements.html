@@ -15,7 +15,7 @@
         <td>{{ supplement.name }}</td>
         <td>{{ supplement.price }}</td>
         <td>
-            <a ng-click="editSupplement(supplement.id)" id="btnEditSupplement" class="btn btn-primary" href="#">
+            <a ng-click="gotoEditSupplement(supplement.id)" id="btnOpenSupplement" class="btn btn-primary" href="#">
                 <i class="glyphicon glyphicon-pencil"></i>
             </a>
 
@@ -27,6 +27,6 @@
     </tbody>
 </table>
 
-<a ng-click="newSupplement()" id="btnNewSupplement" class="btn btn-primary" href="#">
+<a ng-click="gotoNewSupplement()" id="btnNewSupplement" class="btn btn-primary" href="#">
     <i class="glyphicon glyphicon-plus"></i>
 </a>  
