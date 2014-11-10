@@ -45,18 +45,23 @@ supplementsPage = function () {
         var sid =   firstElement.element(by.binding('supplement.id'));
         var sname = firstElement.element(by.binding('supplement.name'));
         var sprice = firstElement.element(by.binding('supplement.price'));
-        firstElement.element(by.id('btnEditSupplement')).click();
-        console.log('***************YADDAYADDAYADDA*****************');
-        console.log('////////SID ' + sid);
-        console.log('////////SName ' + sname);
-        console.log('////////SPrice ' + sprice);
 
-        element(by.id('name')).getText().then(function(text) {
+
+        console.log('***************YADDAYADDAYADDA*****************');
+        sid.getText().then(function(text) {
             console.log(text);
         });
-        element(by.id('price')).getText().then(function(text) {
+        sname.getText().then(function(text) {
             console.log(text);
         });
+        sprice.getText().then(function(text) {
+            console.log(text);
+        });
+        console.log('***************YADDAYADDAYADDA*****************');
+
+        firstElement.element(by.id('btnEditSupplement')).click();
+
+
 
 //        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click();
 //        var id = element(by.repeater('supplement in supplements').row(row)).element(by.binding('removeSupplement(supplement.id)'));

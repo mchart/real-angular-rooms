@@ -2,9 +2,9 @@
 
 var supplementsPage = require('../pageObjects/supplements.po');
 
-describe('As an owner as I navigate to supplements', function() {
+describe('As an owner', function() {
 
-    describe("when I go to supplements I should", function() {
+    describe("when I navigate to supplements I should", function() {
 
         var supplements,
             supplementsBefore;
@@ -35,7 +35,7 @@ describe('As an owner as I navigate to supplements', function() {
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-        it('be able to open a supplement', function () {
+        it('be able to access a supplemens\'s details', function () {
             supplementsPage.openFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
