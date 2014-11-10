@@ -17,26 +17,26 @@ describe('As an owner', function() {
             })
         });
 
-        it('be in the supplements page', function () {
+        xit('be in the supplements page', function () {
             expect(supplementsPage.getSubPage()).toBe('Supplements');
         });
 
-        it('see 1+ supplements', function () {
+        xit('see 1+ supplements', function () {
             expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(1);
         });
 
-        it('be able to delete supplements', function () {
+        xit('be able to delete supplements', function () {
             supplementsPage.removeFirstSupplement()
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
         });
 
-        it('be able to add supplements', function () {
+        xit('be able to add supplements', function () {
             supplementsPage.addSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
         it('be able to access a supplement\'s details', function () {
-            expect(supplementsPage.gotoSupplementDetails()).toBe(true);
+            expect(supplementsPage.getFirstSupplementName()).toBe('testSupplement');
         });
 
 //        it('see details of a supplement if I choose to edit it', function () {

@@ -24,6 +24,10 @@ supplementsPage = function () {
         return element.all(by.repeater('supplement in supplements'));
     };
 
+    me.getFirstSupplement = function () {
+        return element.all(by.repeater('supplement in supplements')).first();
+    };
+
     me.getSupplementsRow = function(row) {
         return element(by.repeater('supplement in supplements').row(row));
     };
@@ -39,58 +43,56 @@ supplementsPage = function () {
         element(by.id('btnSaveNewSupplement')).click();
     };
 
-    me.gotoSupplementDetails = function () {
-//        element(by.repeater('supplement in supplements').row(rowNumber)).element(by.id('btnEditSupplement')).click();
+    me.getSupplementDetailsByBinding = function () {
         var firstElement = element.all(by.repeater('supplement in supplements')).first();
-        var sid =   firstElement.element(by.binding('supplement.id'));
-        var sname = firstElement.element(by.binding('supplement.name'));
-        var sprice = firstElement.element(by.binding('supplement.price'));
 
         var supplementDetails = {};
-        var accessedSupplementDetails = {}
 
+        firstElement.element(by.binding('supplement.id')).getText().then(function(text) {
+            console.log(text);
+            supplementDetails.sid = text;
+        });
 
-//        runs( function () {
-            console.log('********************************');
-            sid.getText().then(function(text) {
-                console.log(text);
-                supplementDetails.sid = text;
-            });
-            sname.getText().then(function(text) {
-                console.log(text);
-                supplementDetails.sname = text;
-            });
-            sprice.getText().then(function(text) {
-                console.log(text);
-                supplementDetails.sprice = text;
-            });
-            console.log('********************************');
-//        });
+        firstElement.element(by.binding('supplement.name')).getText().then(function(text) {
+            console.log(text);
+            supplementDetails.sname = text;
+        });
 
-        firstElement.element(by.id('btnSupplementDetails')).click();
+        firstElement.element(by.binding('supplement.price')).getText().then(function(text) {
+            console.log(text);
+            supplementDetails.sprice = text;
+        });
 
-//        runs( function () {
+        console.log(supplementDetails);
+        return supplementDetails;
+    };
 
-            // sid = element(by.id('id'));
-            sname = element(by.id('name'));
-            sprice = element(by.id('price'));
+    me.getDataByBinding = function (data) {
+        return element(by.binding(data));
+    };
 
-            console.log('********************************');
-            sid.getText().then(function(text) {
-                console.log(text);
-                accessedSupplementDetails.sid = text;
-            });
-            sname.getText().then(function(text) {
-                console.log(text);
-                accessedSupplementDetails.sname = text;
-            });
-            sprice.getText().then(function(text) {
-                console.log(text);
-                accessedSupplementDetails.sprice = text;
-            });
-            console.log( 'Initial Supplement' + supplementDetails );
-            console.log( 'Accessed Supplement' + accessedSupplementDetails );
-            console.log('********************************');
+    me.getFirstSupplementName = function () {
+        return this.getFirstSupplement().element(by.binding('supplement.name')).getText();//.element(by.binding('supplement.name'));
+    }
+
+//        firstElement.element(by.id('btnSupplementDetails')).click();
+//
+////        runs( function () {
+//
+//            // sid = element(by.id('id'));
+//            sname = element(by.id('name'));
+//            sprice = element(by.id('price'));
+//
+//            console.log('********************************');
+//            sid.getText().then(function(text) {
+//                console.log(text);
+//                accessedSupplementDetails.sid = text;
+//            });
+//            sname;
+//            sprice
+//            console.log( 'Initial Supplement' + supplementDetails );
+//            console.log( 'Accessed Supplement' + accessedSupplementDetails );
+//            console.log('********************************');
 //        });
 
 //        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click();
@@ -99,7 +101,6 @@ supplementsPage = function () {
 //        update supplement with new data
 //        check data was correctly updated
 //        return true
-    };
 };
 
 module.exports = new supplementsPage();
