@@ -36,8 +36,7 @@ describe('As an owner', function() {
         });
 
         it('be able to access a supplement\'s details', function () {
-            supplementsPage.openFirstSupplement();
-            expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
+            expect(supplementsPage.gotoSupplementDetails()).toBe(true);
         });
 
 //        it('see details of a supplement if I choose to edit it', function () {
