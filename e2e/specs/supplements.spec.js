@@ -36,7 +36,14 @@ describe('As an owner', function() {
         });
 
         it('be able to access a supplement\'s details', function () {
-            expect(supplementsPage.getFirstSupplementName()).toBe('testSupplement');
+
+            var name = supplementsPage.getFirstSupplementNameByBinding(),
+                price = supplementsPage.getFirstSupplementPriceByBinding();
+
+            supplementsPage.navigateToSupplementDetails();
+
+            expect(name).toBe(supplementsPage.getName());
+            expect(price).toBe(supplementsPage.getFirstSupplementPriceById())
         });
 
 //        it('see details of a supplement if I choose to edit it', function () {

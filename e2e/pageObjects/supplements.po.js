@@ -43,64 +43,77 @@ supplementsPage = function () {
         element(by.id('btnSaveNewSupplement')).click();
     };
 
-    me.getSupplementDetailsByBinding = function () {
-        var firstElement = element.all(by.repeater('supplement in supplements')).first();
+//    me.getSupplementDetailsByBinding = function () {
+//        var firstElement = element.all(by.repeater('supplement in supplements')).first();
+//
+//        var supplementDetails = {};
+//
+//        firstElement.element(by.binding('supplement.id')).getText().then(function(text) {
+//            console.log(text);
+//            supplementDetails.sid = text;
+//        });
+//
+//        firstElement.element(by.binding('supplement.name')).getText().then(function(text) {
+//            console.log(text);
+//            supplementDetails.sname = text;
+//        });
+//
+//        firstElement.element(by.binding('supplement.price')).getText().then(function(text) {
+//            console.log(text);
+//            supplementDetails.sprice = text;
+//        });
+//
+//        console.log(supplementDetails);
+//        return supplementDetails;
+//    };
 
-        var supplementDetails = {};
-
-        firstElement.element(by.binding('supplement.id')).getText().then(function(text) {
+    me.getDataByBinding = function (su, data) {
+        return su.element(by.binding(data)).getText().then(function(text) {
             console.log(text);
-            supplementDetails.sid = text;
+            return text;
         });
-
-        firstElement.element(by.binding('supplement.name')).getText().then(function(text) {
-            console.log(text);
-            supplementDetails.sname = text;
-        });
-
-        firstElement.element(by.binding('supplement.price')).getText().then(function(text) {
-            console.log(text);
-            supplementDetails.sprice = text;
-        });
-
-        console.log(supplementDetails);
-        return supplementDetails;
     };
 
-    me.getDataByBinding = function (data) {
-        return element(by.binding(data));
+    me.getFirstSupplementIdByBinding = function () {
+        return this.getDataByBinding(this.getFirstSupplement(), 'supplement.id');
     };
 
-    me.getFirstSupplementName = function () {
-        return this.getFirstSupplement().element(by.binding('supplement.name')).getText();//.element(by.binding('supplement.name'));
+    me.getFirstSupplementNameByBinding = function () {
+        return this.getDataByBinding(this.getFirstSupplement(), 'supplement.name');
+    };
+
+    me.getFirstSupplementPriceByBinding = function () {
+        return this.getDataByBinding(this.getFirstSupplement(), 'supplement.price');
+    };
+
+    me.navigateToSupplementDetails = function () {
+        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnSupplementDetails')).click();
+    };
+
+    me.getDataByID = function (data) {
+        return element(by.id(data)).getText().then(function(text) {
+            console.log(text);
+            return text;
+        });
+    };
+
+    me.getFirstSupplementIdById = function () {
+        return this.getDataByID('id');
+    };
+
+    me.getFirstSupplementNameById = function () {
+        return this.getDataByID('name');
+    };
+
+    me.getFirstSupplementPriceById = function () {
+        return this.getDataByID('price');
+    };
+
+    //Is it working? Test that it finds the element
+    me.getName = function () {
+        return element(by.id('name'));
     }
 
-//        firstElement.element(by.id('btnSupplementDetails')).click();
-//
-////        runs( function () {
-//
-//            // sid = element(by.id('id'));
-//            sname = element(by.id('name'));
-//            sprice = element(by.id('price'));
-//
-//            console.log('********************************');
-//            sid.getText().then(function(text) {
-//                console.log(text);
-//                accessedSupplementDetails.sid = text;
-//            });
-//            sname;
-//            sprice
-//            console.log( 'Initial Supplement' + supplementDetails );
-//            console.log( 'Accessed Supplement' + accessedSupplementDetails );
-//            console.log('********************************');
-//        });
-
-//        element.all(by.repeater('supplement in supplements')).first().element(by.id('btnRemoveSupplement')).click();
-//        var id = element(by.repeater('supplement in supplements').row(row)).element(by.binding('removeSupplement(supplement.id)'));
-//        communicate with DB check if supplement.id = id exists
-//        update supplement with new data
-//        check data was correctly updated
-//        return true
 };
 
 module.exports = new supplementsPage();
