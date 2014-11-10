@@ -35,7 +35,7 @@ describe('As an owner', function() {
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-        it('be able to access a supplemens\'s details', function () {
+        it('be able to access a supplement\'s details', function () {
             supplementsPage.openFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });

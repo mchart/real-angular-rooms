@@ -46,20 +46,31 @@ supplementsPage = function () {
         var sname = firstElement.element(by.binding('supplement.name'));
         var sprice = firstElement.element(by.binding('supplement.price'));
 
+        var svalues = { sid : '', sname : '', sprice : ''};
 
-        console.log('***************YADDAYADDAYADDA*****************');
+        console.log('********************************');
         sid.getText().then(function(text) {
             console.log(text);
+            svalues.sid = text;
         });
         sname.getText().then(function(text) {
             console.log(text);
+            svalues.sname = text;
         });
         sprice.getText().then(function(text) {
             console.log(text);
+            svalues.sprice = text;
         });
-        console.log('***************YADDAYADDAYADDA*****************');
+        console.log( 'after details' + svalues );
+        console.log('********************************');
 
-        firstElement.element(by.id('btnEditSupplement')).click();
+        firstElement.element(by.id('btnSupplementDetails')).click();
+
+        var sid = element(by.id('id')).sendKeys('testSupplement');
+        var sname = element(by.id('name')).sendKeys('testSupplement');
+        var sprice = element(by.id('price')).sendKeys('42');
+
+
 
 
 

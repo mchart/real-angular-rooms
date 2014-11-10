@@ -13,12 +13,12 @@ module.exports = function(query){
     query.supplements.getSingle = function(id, callback) {
          db.get(id, function(err, result) {
             var supplement = result.value;
-            console.log('nelk  ' +
+            console.log('Getting single supplement: {' +
                 ' ' + supplement.id +
                 ' ' + supplement.type +
                 ' ' + supplement.name +
                 ' ' + supplement.price +
-                ' ');
+                ' }');
             callback(supplement);
         });
     };
