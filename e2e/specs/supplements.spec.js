@@ -35,25 +35,13 @@ describe('As an owner', function() {
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-        it('be able to access a supplement\'s details', function () {
+        it('be able to edit supplements', function () {
+            supplementsPage.editSupplement();
+            expect(supplementsPage.getSubPage()).toBe('EDITED');
+            expect(supplementsPage.getName()).toBe('Ramon');
 
-            var name = supplementsPage.getFirstSupplementNameByBinding(),
-                price = supplementsPage.getFirstSupplementPriceByBinding();
-
-            supplementsPage.navigateToSupplementDetails();
-
-            expect(name).toBe(supplementsPage.getName());
-            expect(price).toBe(supplementsPage.getFirstSupplementPriceById())
         });
-
-//        it('see details of a supplement if I choose to edit it', function () {
-//            expect(supplementsPage.accessFirstSupplement()).toBe(true);
-//        });
-
-//        it('see the supplement has been edited and saved if I edited its details', function () {
-//            expect(supplementsPage.accessFirstSupplement()).toBe(true);
-//        });
-
+        
     });
 
 });
