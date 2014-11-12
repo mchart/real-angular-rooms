@@ -58,13 +58,13 @@ supplementsPage = function () {
 
     me.getEditedSupplementDetails = function() {
         var supplementDetails = {};
-
-        //supplementDetails.sid = element(by.id('id'));
+        supplementDetails.sid = element(by.binding('es.id')).getText();
         supplementDetails.sname = element(by.id('name')).getAttribute('value');
-        console.log(supplementDetails.sname)
-        supplementDetails.sprice = element(by.id('price'));
-        console.log(supplementDetails.sprice)
+        supplementDetails.sprice = element(by.id('price')).getAttribute('value');
+        return supplementDetails;
+    };
 
+    me.saveEditedSupplementAndNavigateBackToSupplements = function () {
         element(by.id('btnSaveSupplement')).click();
     };
 

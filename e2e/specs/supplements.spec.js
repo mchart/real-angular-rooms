@@ -14,7 +14,7 @@ describe('As an owner', function() {
             supplements = supplementsPage.getSupplements();
             supplements.count().then(function(initialCount){
                 supplementsBefore = initialCount
-            })
+            });
         });
 
         xit('be in the supplements page', function () {
@@ -31,29 +31,19 @@ describe('As an owner', function() {
         });
 
         it('be able to access a supplement\'s details', function () {
-
-            // firstSupplements Details
+            // Get firstSupplements Details
             var firstSupplement = supplementsPage.getFirstSupplementDetails();
 
             //Navigate to First Supplement
             supplementsPage.navigateToFirstSupplement();
 
-            // editedSupplement Details
+            // Get editedSupplement Details
             var editedSupplement = supplementsPage.getEditedSupplementDetails();
 
-            // Making sure data is correct for firstSupplement
-            expect(firstSupplement.sid).toBe('Id')
-            expect(firstSupplement.sname).toBe('Name')
-            expect(firstSupplement.sprice).toBe('Price')
-
-//            // Making sure data is correct for editedSupplement
-//            expect(editedSupplement.sid).toBe('Id')
-//            expect(editedSupplement.sname).toBe('Name')
-//            expect(editedSupplement.sprice).toBe('Price')
-
-            //They should both be the same
-
-
+            // Id, name and price should both be the same
+            expect(firstSupplement.sid).toBe(editedSupplement.sid);
+            expect(firstSupplement.sname).toBe(editedSupplement.sname);
+            expect(firstSupplement.sprice).toBe(editedSupplement.sprice);
         });
 
         xit('be able to change a supplement\'s details and save them', function () {
@@ -71,7 +61,7 @@ describe('As an owner', function() {
         });
 
         xit('be able to delete supplements', function () {
-            supplementsPage.removeFirstSupplement()
+            supplementsPage.removeFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
         });
 
