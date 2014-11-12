@@ -17,16 +17,16 @@ describe('As an owner', function() {
             });
         });
 
-        xit('be in the supplements page', function () {
+        it('be in the supplements page', function () {
             expect(supplementsPage.getSubPage()).toBe('Supplements');
         });
 
-        xit('be able to add supplements', function () {
+        it('be able to add supplements', function () {
             supplementsPage.addSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
 
-        xit('see 1+ supplements', function () {
+        it('see 1+ supplements', function () {
             expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
         });
 
@@ -60,7 +60,7 @@ describe('As an owner', function() {
             expect(firstSupplement.price).toBe(12.99);
         });
 
-        xit('be able to delete supplements', function () {
+        it('be able to delete supplements', function () {
             supplementsPage.removeFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
         });
