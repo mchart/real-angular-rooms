@@ -9,9 +9,13 @@ function expectMyStuffToBeEqual(first, second) {
     expect(first.sprice).toBe(second.sprice);
 }
 
-describe('As an owner', function() {
+describe('As an user when I navigate to', function() {
 
-    describe("when I navigate to supplements I should", function() {
+    function whereAmI() {
+        return supplementsPage.getSubPage();
+    }
+
+    describe("the supplements page I", function() {
 
         var supplements,
             supplementsBefore;
@@ -24,8 +28,8 @@ describe('As an owner', function() {
             });
         });
 
-        it('be in the supplements page', function () {
-            expect(supplementsPage.getSubPage()).toBe('Supplements');
+        it('am in the supplements page', function () {
+            expect(whereAmI()).toBe('Supplements');
         });
 
         it('be able to add supplements', function () {
