@@ -29,16 +29,27 @@ describe('As an user when I navigate to', function() {
         });
 
         it('am in the supplements page', function () {
+
             expect(whereAmI()).toBe('Supplements');
+
         });
 
-        it('be able to add supplements', function () {
+        it('can add supplements to the list of supplements', function () {
+
             supplementsPage.addSupplement();
+
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
+
         });
 
-        it('see 1+ supplements', function () {
+        function supplementListHasAtLeastOneSupplement() {
             expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
+        }
+
+        it('see at least one supplement in the list', function () {
+
+            supplementListHasAtLeastOneSupplement();
+
         });
 
         it('be able to access a supplement\'s details TO BE RENAMED to reflect whats going on inside', function () {
