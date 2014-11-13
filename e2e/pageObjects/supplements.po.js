@@ -69,9 +69,13 @@ supplementsPage = function () {
     };
 
     me.editSupplement = function (name, price) {
-        element(by.id('name')).sendKeys(name);
-        element(by.id('price')).sendKeys(price);
-        element(by.id('btnSaveNewSupplement')).click();
+        var sname = element(by.id('name'));
+        sname.clear();
+        sname.sendKeys(name);
+
+        var sprice = element(by.id('price'));
+        sprice.clear();
+        sprice.sendKeys(price);
     }
 
 };

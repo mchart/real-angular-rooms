@@ -2,6 +2,13 @@
 
 var supplementsPage = require('../pageObjects/supplements.po');
 
+function expectMyStuffToBeEqual(first, second) {
+    // Id, name and price should both be the same
+    expect(first.sid).toBe(second.sid);
+    expect(first.sname).toBe(second.sname);
+    expect(first.sprice).toBe(second.sprice);
+}
+
 describe('As an owner', function() {
 
     describe("when I navigate to supplements I should", function() {
@@ -30,7 +37,7 @@ describe('As an owner', function() {
             expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
         });
 
-        it('be able to access a supplement\'s details', function () {
+        it('be able to access a supplement\'s details TO BE RENAMED to reflect whats going on inside', function () {
             // Get firstSupplements Details
             var firstSupplement = supplementsPage.getFirstSupplementDetails();
 
@@ -41,23 +48,26 @@ describe('As an owner', function() {
             var editedSupplement = supplementsPage.getEditedSupplementDetails();
 
             // Id, name and price should both be the same
-            expect(firstSupplement.sid).toBe(editedSupplement.sid);
-            expect(firstSupplement.sname).toBe(editedSupplement.sname);
-            expect(firstSupplement.sprice).toBe(editedSupplement.sprice);
+            expectMyStuffToBeEqual(firstSupplement, editedSupplement);
         });
 
-        xit('be able to change a supplement\'s details and save them', function () {
+        it('be able to change a supplement\'s details and save them', function () {
+            var newName = 'Yes',
+                newPrice = 42;
+
+            // Navigate to First Supplement
             supplementsPage.navigateToFirstSupplement();
 
-            var editedSupplement = supplementsPage.getEditedSupplementDetails();
+            // Enter new details for edited Supplement
+            supplementsPage.editSupplement(newName, newPrice);
 
-            supplementsPage.editSupplement('Edited', 12.99);
+            // Save details and navigate back to Supplements
+            supplementsPage.saveEditedSupplementAndNavigateBackToSupplements();
 
             var firstSupplement = supplementsPage.getFirstSupplementDetails();
 
-            expect(editedSupplement).not.toBe(firstSupplement);
-            expect(firstSupplement.name).toBe('Edited');
-            expect(firstSupplement.price).toBe(12.99);
+            expect(firstSupplement.sname).toBe(newName);
+            expect(firstSupplement.sprice).toBe(String(newPrice));
         });
 
         it('be able to delete supplements', function () {
