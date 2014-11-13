@@ -32,7 +32,7 @@ describe('As a client', function () {
         it('I should be able to go to the "cancellation policies" feature', function () {
             landingPage.cancellationFeature.click()
 
-            expect(browser.getCurrentUrl()).toContain('/cancellationPolicy');
+            expect(browser.getCurrentUrl()).toContain('/cancellationPolicies');
         });
 
         it('I should be able to go to the "tutorials" feature', function () {

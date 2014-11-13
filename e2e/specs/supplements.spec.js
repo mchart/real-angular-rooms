@@ -26,20 +26,21 @@ describe('As a owner', function() {
         });
 
         it('I should be able to delete supplements', function () {
-            supplementsPage.removeFirstSupplement()
+            supplementsPage.removeFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
         });
+
 
         it('I should be able to add supplements', function () {
             supplementsPage.addSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
-
+/*
         it('I should be able to open a supplement', function () {
             supplementsPage.openFirstSupplement();
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
         });
-
+*/
 //        it('If I choose to edit a supplement I should see its details in the next screen', function () {
 //            expect(supplementsPage.accessFirstSupplement()).toBe(true);
 //        });
