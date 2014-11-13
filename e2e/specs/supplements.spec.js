@@ -2,23 +2,42 @@
 
 var supplementsPage = require('../pageObjects/supplements.po');
 
-function expectMyStuffToBeEqual(first, second) {
-    // Id, name and price should both be the same
-    expect(first.sid).toBe(second.sid);
-    expect(first.sname).toBe(second.sname);
-    expect(first.sprice).toBe(second.sprice);
-}
-
 describe('As an user when I navigate to', function() {
-
-    function whereAmI() {
-        return supplementsPage.getSubPage();
-    }
 
     describe("the supplements page I", function() {
 
         var supplements,
             supplementsBefore;
+
+        var NEW_DETAILS = { name : 'EditedName', price : '41.99'};
+
+
+        function whereAmI() {
+            return supplementsPage.getSubPage();
+        }
+
+        function supplementListHasAtLeastOneSupplement() {
+            expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
+        }
+
+        function beInside(firstSupplement) {
+            var editedSupplement = supplementsPage.getEditedSupplementDetails();
+            expect(firstSupplement.sid).toBe(editedSupplement.sid);
+            expect(firstSupplement.sname).toBe(editedSupplement.sname);
+            expect(firstSupplement.sprice).toBe(editedSupplement.sprice);
+        }
+
+        function changeSupplementDetails(NEW_DETAILS) {
+            supplementsPage.navigateToFirstSupplement();
+            supplementsPage.editSupplement(NEW_DETAILS.name, NEW_DETAILS.price);
+            supplementsPage.saveEditedSupplementAndNavigateBackToSupplements();
+        }
+
+        function firstSupplementHas(NEW_DETAILS) {
+            var firstSupplement = supplementsPage.getFirstSupplementDetails();
+            expect(firstSupplement.sname).toBe(NEW_DETAILS.name);
+            expect(firstSupplement.sprice).toBe(NEW_DETAILS.price);
+        }
 
         beforeEach(function () {
             supplementsPage.navigateToSupplements();
@@ -42,52 +61,36 @@ describe('As an user when I navigate to', function() {
 
         });
 
-        function supplementListHasAtLeastOneSupplement() {
-            expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
-        }
-
         it('see at least one supplement in the list', function () {
 
             supplementListHasAtLeastOneSupplement();
 
         });
 
-        it('be able to access a supplement\'s details TO BE RENAMED to reflect whats going on inside', function () {
-            // Get firstSupplements Details
+        it('can access the details of the first supplement', function () {
+
             var firstSupplement = supplementsPage.getFirstSupplementDetails();
 
-            //Navigate to First Supplement
             supplementsPage.navigateToFirstSupplement();
 
-            // Get editedSupplement Details
-            var editedSupplement = supplementsPage.getEditedSupplementDetails();
+            beInside(firstSupplement);
 
-            // Id, name and price should both be the same
-            expectMyStuffToBeEqual(firstSupplement, editedSupplement);
         });
 
-        it('be able to change a supplement\'s details and save them', function () {
-            var newName = 'Yes',
-                newPrice = 42;
+        it('can access a supplement, change its details and it will show up in the supplement list', function () {
 
-            // Navigate to First Supplement
-            supplementsPage.navigateToFirstSupplement();
+            changeSupplementDetails(NEW_DETAILS);
 
-            // Enter new details for edited Supplement
-            supplementsPage.editSupplement(newName, newPrice);
+            firstSupplementHas(NEW_DETAILS);
 
-            // Save details and navigate back to Supplements
-            supplementsPage.saveEditedSupplementAndNavigateBackToSupplements();
-
-            var firstSupplement = supplementsPage.getFirstSupplementDetails();
-
-            expect(firstSupplement.sname).toBe(newName);
-            expect(firstSupplement.sprice).toBe(String(newPrice));
         });
 
         it('be able to delete supplements', function () {
+
             supplementsPage.removeFirstSupplement();
+
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
+
         });
 
     });
