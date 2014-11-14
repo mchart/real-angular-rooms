@@ -35,33 +35,48 @@ cancellationPoliciesPage = function () {
         element(by.id('btnSaveNewCancellationPolicy')).click();
     };
 
-    me.getFirstCancellationPolicy = function () {
+
+
+    me.getFirstCancellationPolicyDetails = function () {
         var firstElement = element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();
-
-
-        var id = firstElement.element(by.binding('cancellationPolicy.id')).getText();
-        var name = firstElement.element(by.binding('cancellationPolicy.name')).getText();
-        var description = firstElement.element(by.binding('cancellationPolicy.description')).getText();
-
-        return {
-            id: id,
-            name: name,
-            description: description
-
-        }
+        var firstCancellationPolicyDetails = {};
+        firstCancellationPolicyDetails.sid = firstElement.element(by.binding('cancellationPolicy.id')).getText();
+        firstCancellationPolicyDetails.sname = firstElement.element(by.binding('cancellationPolicy.name')).getText();
+        firstCancellationPolicyDetails.sdescription = firstElement.element(by.binding('cancellationPolicy.description')).getText();
+        return firstCancellationPolicyDetails;
     };
 
-    me.navigateToFirstElement = function () {
+
+    me.getFirstCancellationPolicy = function () {
+        return element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();
+    };
+
+    me.editCancellationPolicy = function (name, description) {
+        var sname = element(by.id('name'));
+        sname.clear();
+        sname.sendKeys(name);
+
+        var sdescription = element(by.id('description'));
+        sdescription.clear();
+        sdescription.sendKeys(description);
+    }
+
+    me.navigateToFirstCancellationPolicy = function () {
         element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first().element(by.id('btnEditCancellationPolicy')).click();
     };
 
-    me.getCancellationPolicyInformation = function () {
-        return {
-            id: element(by.binding('cancellationPolicy.id')).getText(),
-            name: element(by.id('name')).getAttribute('value'),
-            description: element(by.id('description')).getAttribute('value')
-        }
-    }
+    me.saveEditedCancellationPolicyAndNavigateBackToCancellationPolicies = function () {
+        element(by.id('btnEditCancellationPolicy')).click();
+    };
+
+    me.getEditedCancellationPolicyDetails = function () {
+        var cancellationPolicyDetails = {};
+        cancellationPolicyDetails.sid = element(by.binding('cancellationPolicy.id')).getText(),
+            cancellationPolicyDetails.sname = element(by.id('name')).getAttribute('value'),
+                cancellationPolicyDetails.sdescription =  element(by.id('description')).getAttribute('value')
+
+        return cancellationPolicyDetails;
+    };
 
 };
 

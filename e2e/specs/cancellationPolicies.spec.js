@@ -9,6 +9,7 @@ describe('As a owner', function() {
         var cancellationPolicies,
             cancellationPoliciesBefore;
 
+        var NEW_DETAILS = { name : 'EditedName', description: 'EditDescription'};
 
         beforeEach(function () {
             cancellationPoliciesPage.navigateToCancellationPolicies();
@@ -17,6 +18,25 @@ describe('As a owner', function() {
                 cancellationPoliciesBefore = initialCount
             })
         });
+
+        function beInside(firstCancellationPolicy) {
+            var editedCancellationPolicy = cancellationPoliciesPage.getEditedCancellationPolicyDetails();
+            expect(firstCancellationPolicy.sid).toBe(editedCancellationPolicy.sid);
+            expect(firstCancellationPolicy.sname).toBe(editedCancellationPolicy.sname);
+            expect(firstCancellationPolicy.sdescription).toBe(editedCancellationPolicy.sdescription);
+        }
+
+        function changeCancellationPolicyDetails(NEW_DETAILS) {
+            cancellationPoliciesPage.navigateToFirstCancellationPolicy();
+            cancellationPoliciesPage.editCancellationPolicy(NEW_DETAILS.name, NEW_DETAILS.description);
+            cancellationPoliciesPage.saveEditedCancellationPolicyAndNavigateBackToCancellationPolicies();
+        }
+
+        function firstCancellationPolicyHas(NEW_DETAILS) {
+            var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
+            expect(firstCancellationPolicy.sname).toBe(NEW_DETAILS.name);
+            expect(firstCancellationPolicy.sdescription).toBe(NEW_DETAILS.description);
+        }
 
         it('I should be in the cancellationPolicies page', function () {
             expect(cancellationPoliciesPage.getSubPage()).toBe('Cancellation policies available');
@@ -31,37 +51,29 @@ describe('As a owner', function() {
             expect(cancellationPoliciesPage.getNoOfCancellationPolicies()).toBeGreaterThan(0);
         });
 
-        it('I should be able to delete cancellationPolicies', function () {
+        it('can access the details of the first cancellationPolicy', function () {
+
+            var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
+
+            cancellationPoliciesPage.navigateToFirstCancellationPolicy();
+
+            beInside(firstCancellationPolicy);
+
+        });
+
+        it('can access a cancellationPolicy, change its details and it will show up in list of cancellationPolicies', function () {
+
+            changeCancellationPolicyDetails(NEW_DETAILS);
+            firstCancellationPolicyHas(NEW_DETAILS);
+
+        });
+
+        it('be able to delete cancellationPolicies', function () {
             cancellationPoliciesPage.removeFirstCancellationPolicy();
             expect(cancellationPoliciesPage.getNoOfCancellationPolicies()).toBe(cancellationPoliciesBefore - 1);
-        });
-
-        it('I should be able to edit a cancellationPolicy', function () {
-
-            var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicy();
-
-            var firstCancellationPolicyId = firstCancellationPolicy.id;
-            var firstCancellationPolicyName = firstCancellationPolicy.name;
-            var firstCancellationPolicyDescription = firstCancellationPolicy.description;
-
-              // Go to Edit Cancellation Policies
-            cancellationPoliciesPage.navigateToFirstElement();
-
-            expect(cancellationPoliciesPage.getSubPage()).toBe('Edit Cancellation Policy');
-
-            var cancellationPolicyBeingEdited = cancellationPoliciesPage.getCancellationPolicyInformation();
-
-            var afterClickFirstCancellationPolicy = cancellationPoliciesPage.getCancellationPolicyInformation();
-
-            var afterClickId = afterClickFirstCancellationPolicy.id;
-            var afterClickName = afterClickFirstCancellationPolicy.name;
-            var afterClickDescription = afterClickFirstCancellationPolicy.description;
-
-            expect(afterClickId).toBe(firstCancellationPolicyId);
-            expect(afterClickName).toBe(firstCancellationPolicyName);
-            expect(afterClickDescription).toBe(firstCancellationPolicyDescription);
 
         });
+
 
     });
 
