@@ -58,7 +58,7 @@ supplementsPage = function () {
 
     me.getEditedSupplementDetails = function() {
         var supplementDetails = {};
-        supplementDetails.sid = element(by.binding('es.id')).getText();
+        supplementDetails.sid = element(by.binding('su.id')).getText();
         supplementDetails.sname = element(by.id('name')).getAttribute('value');
         supplementDetails.sprice = element(by.id('price')).getAttribute('value');
         return supplementDetails;

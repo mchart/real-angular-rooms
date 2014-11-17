@@ -5,7 +5,7 @@ angular.module('ngRooms.domain.supplement', [])
 
                 $scope.populateSingleSupplement = function (id) {
                     supplementService.single(id).then(function (data) {
-                        $scope.es = data;
+                        $scope.su = data;
                         $scope.editing = id ? true : false;
                     });
                 };
@@ -13,11 +13,10 @@ angular.module('ngRooms.domain.supplement', [])
                 $scope.newSupplement = function () {
                     var supplement = {
                         type: 'supplement',
-                        name: $scope.ns.name,
-                        price: $scope.ns.price
+                        name: $scope.su.name,
+                        price: $scope.su.price
                     };
                     supplementService.add(supplement).then(function () {
-//                        $scope.adding = false;
                         $location.path('/supplements');
                     });
                 };
@@ -25,11 +24,10 @@ angular.module('ngRooms.domain.supplement', [])
                 $scope.editSupplement = function () {
                     var supplement = {
                         type: 'supplement',
-                        name: $scope.es.name,
-                        price: $scope.es.price
+                        name: $scope.su.name,
+                        price: $scope.su.price
                     };
                     supplementService.edit($routeParams.id, supplement).then(function () {
-//                        $scope.editing = false;
                         $location.path('/supplements');
                     });
                 };
