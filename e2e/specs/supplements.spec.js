@@ -60,13 +60,13 @@ describe('As an user when I navigate to', function() {
             expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
 
         });
-
+/*
         it('see at least one supplement in the list', function () {
 
             supplementListHasAtLeastOneSupplement();
 
         });
-
+*/
         it('can access the details of the first supplement', function () {
 
             var firstSupplement = supplementsPage.getFirstSupplementDetails();

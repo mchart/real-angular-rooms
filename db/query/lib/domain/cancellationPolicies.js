@@ -10,6 +10,11 @@ module.exports = function(query){
         return cancellationPolicy.id;
     };
 
+    var transformFunction = function(v, k) {
+        v.value.id = k;
+        return v.value;
+    };
+
     query.cancellationPolicies.getList = function(callbackWithCancellationPolicies) {
         var q = {
             limit: 10,
@@ -21,15 +26,14 @@ module.exports = function(query){
 
             db.getMulti(keys, null, function(err, results) {
 
-                var cancellationPolicies = _.map(results, function(v, k) {
-                    v.value.id = k;
-                    return v.value;
-                });
+                var cancellationPolicies = _.map(results, transformFunction);
 
                 callbackWithCancellationPolicies(cancellationPolicies);
             });
         });
     };
+
+
 
     query.cancellationPolicies.get = function(id, callbackWithCancellationPolicy) {
         db.get(id, function (err, result) {
