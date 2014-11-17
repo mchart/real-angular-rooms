@@ -93,6 +93,18 @@ describe('As an user when I navigate to', function() {
 
         });
 
+        it('see an edit button if I clicked on Edit Supplement', function () {
+
+
+
+        });
+
+        it('see an add button if I clicked on Add Supplement', function () {
+
+
+
+        });
+
     });
 
 });
