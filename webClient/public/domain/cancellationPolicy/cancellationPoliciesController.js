@@ -1,4 +1,4 @@
-angular.module('ngRooms.domain.cancellationPolicies', [])
+angular.module('ngRooms.domain.cancellationPolicy')
 	.controller('CancellationPoliciesController',
 	['$scope', '$routeParams','$location', 'CancellationPolicyService',
 	function($scope, $routeParams, $location, cancellationPolicyService){
