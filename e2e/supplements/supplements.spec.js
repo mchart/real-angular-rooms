@@ -1,6 +1,7 @@
 'use strict';
 
-var supplementsPage = require('./supplements.po.js');
+var supplementsPO = require('./supplements.po.js');
+var supplementPO = require('./supplement.po.js');
 
 describe('As an user when I navigate to', function() {
 
@@ -9,39 +10,45 @@ describe('As an user when I navigate to', function() {
         var supplements,
             supplementsBefore;
 
-        var NEW_DETAILS = { name : 'EditedName', price : '41.99'};
+        var NEW_SUPPLEMENT_DETAILS = { name : 'NewSupplement', price : '20.99'};
+        var EDIT_SUPPLEMENT_DETAILS = { name : 'SupplementEdited', price : '41.99'};
 
 
         function whereAmI() {
-            return supplementsPage.getSubPage();
+            return supplementsPO.getSubPage();
         }
 
-        function supplementListHasAtLeastOneSupplement() {
-            expect(supplementsPage.getNoOfSupplements()).toBeGreaterThan(0);
+        function addNewSupplement(supplement) {
+            supplementPO.addSupplement(supplement.name, supplement.price);
+            supplementPO.saveNewSupplement();
         }
 
-        function beInside(firstSupplement) {
-            var editedSupplement = supplementsPage.getEditedSupplementDetails();
+        function supplementsListHasAtLeastOneSupplement() {
+            expect(supplementsPO.getSupplements().count()).toBeGreaterThan(0);
+        }
+
+        function checkWeAreInside(firstSupplement) {
+            var editedSupplement = supplementPO.getSupplementDetails();
             expect(firstSupplement.sid).toBe(editedSupplement.sid);
             expect(firstSupplement.sname).toBe(editedSupplement.sname);
             expect(firstSupplement.sprice).toBe(editedSupplement.sprice);
         }
 
-        function changeSupplementDetails(NEW_DETAILS) {
-            supplementsPage.navigateToFirstSupplement();
-            supplementsPage.editSupplement(NEW_DETAILS.name, NEW_DETAILS.price);
-            supplementsPage.saveEditedSupplementAndNavigateBackToSupplements();
+        function changeSupplementDetails(supplement) {
+            supplementsPO.navigateToFirstSupplement();
+            supplementPO.editSupplement(supplement.name, supplement.price);
+            supplementPO.saveEditedSupplement();
         }
 
-        function firstSupplementHas(NEW_DETAILS) {
-            var firstSupplement = supplementsPage.getFirstSupplementDetails();
-            expect(firstSupplement.sname).toBe(NEW_DETAILS.name);
-            expect(firstSupplement.sprice).toBe(NEW_DETAILS.price);
+        function checkfirstSupplementHas(supplement) {
+            var firstSupplement = supplementsPO.getFirstSupplementDetails();
+            expect(firstSupplement.sname).toBe(supplement.name);
+            expect(firstSupplement.sprice).toBe(supplement.price);
         }
 
         beforeEach(function () {
-            supplementsPage.navigateToSupplements();
-            supplements = supplementsPage.getSupplements();
+            supplementsPO.navigateToSupplements();
+            supplements = supplementsPO.getSupplements();
             supplements.count().then(function(initialCount){
                 supplementsBefore = initialCount
             });
@@ -55,41 +62,43 @@ describe('As an user when I navigate to', function() {
 
         it('can add supplements to the list of supplements', function () {
 
-            supplementsPage.addSupplement();
+            supplementsPO.navigateToNewSupplement();
 
-            expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore + 1);
+            addNewSupplement(NEW_SUPPLEMENT_DETAILS);
+
+            expect(supplementsPO.getSupplements().count()).toBe(supplementsBefore + 1);
 
         });
 
         it('see at least one supplement in the list', function () {
 
-            supplementListHasAtLeastOneSupplement();
+            supplementsListHasAtLeastOneSupplement();
 
         });
 
         it('can access the details of the first supplement', function () {
 
-            var firstSupplement = supplementsPage.getFirstSupplementDetails();
+            var firstSupplement = supplementsPO.getFirstSupplementDetails();
 
-            supplementsPage.navigateToFirstSupplement();
+            supplementsPO.navigateToFirstSupplement();
 
-            beInside(firstSupplement);
+            checkWeAreInside(firstSupplement);
 
         });
 
         it('can access a supplement, change its details and it will show up in the supplement list', function () {
 
-            changeSupplementDetails(NEW_DETAILS);
+            changeSupplementDetails(EDIT_SUPPLEMENT_DETAILS);
 
-            firstSupplementHas(NEW_DETAILS);
+            checkfirstSupplementHas(EDIT_SUPPLEMENT_DETAILS);
 
         });
 
         it('be able to delete supplements', function () {
 
-            supplementsPage.removeFirstSupplement();
+            supplementsPO.removeFirstSupplement();
 
-            expect(supplementsPage.getNoOfSupplements()).toBe(supplementsBefore - 1);
+            expect(supplementsPO.getSupplements().count()).toBe(supplementsBefore - 1);
 
         });
 
