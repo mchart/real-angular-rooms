@@ -35,8 +35,6 @@ cancellationPoliciesPage = function () {
         element(by.id('btnSaveNewCancellationPolicy')).click();
     };
 
-
-
     me.getFirstCancellationPolicyDetails = function () {
         var firstElement = element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();
         var firstCancellationPolicyDetails = {};
@@ -45,7 +43,6 @@ cancellationPoliciesPage = function () {
         firstCancellationPolicyDetails.sdescription = firstElement.element(by.binding('cancellationPolicy.description')).getText();
         return firstCancellationPolicyDetails;
     };
-
 
     me.getFirstCancellationPolicy = function () {
         return element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();

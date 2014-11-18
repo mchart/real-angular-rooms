@@ -1,6 +1,6 @@
 'use strict';
 
-var cancellationPoliciesPage = require('../pageObjects/cancellationPolicies.po');
+var cancellationPoliciesPage = require('./cancellationPolicies.po.js');
 
 describe('As a owner', function() {
 
