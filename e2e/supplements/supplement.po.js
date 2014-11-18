@@ -31,8 +31,8 @@ supplementsPage = function () {
         sprice.sendKeys(price);
     }
 
-    me.saveEditedSupplement = function () {
-        element(by.id('btnSaveSupplement')).click();
+    me.saveChangesOnSupplement = function () {
+        element(by.id('btnSaveChangesToSupplement')).click();
     };
 
 };

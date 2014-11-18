@@ -5,7 +5,7 @@ var supplementPO = require('./supplement.po.js');
 
 describe('As an user when I navigate to', function() {
 
-    describe("the supplements page I", function() {
+    describe("the supplements page", function() {
 
         var supplements,
             supplementsBefore;
@@ -37,7 +37,7 @@ describe('As an user when I navigate to', function() {
         function changeSupplementDetails(supplement) {
             supplementsPO.navigateToFirstSupplement();
             supplementPO.editSupplement(supplement.name, supplement.price);
-            supplementPO.saveEditedSupplement();
+            supplementPO.saveChangesOnSupplement();
         }
 
         function checkfirstSupplementHas(supplement) {
@@ -54,13 +54,13 @@ describe('As an user when I navigate to', function() {
             });
         });
 
-        it('am in the supplements page', function () {
+        it('I am in the supplements page', function () {
 
             expect(whereAmI()).toBe('Supplements');
 
         });
 
-        it('can add supplements to the list of supplements', function () {
+        it('I can add supplements to the list of supplements', function () {
 
             supplementsPO.navigateToNewSupplement();
 
@@ -70,13 +70,13 @@ describe('As an user when I navigate to', function() {
 
         });
 
-        it('see at least one supplement in the list', function () {
+        it('I see at least one supplement in the list', function () {
 
             supplementsListHasAtLeastOneSupplement();
 
         });
 
-        it('can access the details of the first supplement', function () {
+        it('I can access the details of the first supplement', function () {
 
             var firstSupplement = supplementsPO.getFirstSupplementDetails();
 
@@ -86,7 +86,7 @@ describe('As an user when I navigate to', function() {
 
         });
 
-        it('can access a supplement, change its details and it will show up in the supplement list', function () {
+        it('I can access a supplement, change its details and it will show up in the supplement list', function () {
 
             changeSupplementDetails(EDIT_SUPPLEMENT_DETAILS);
 
@@ -94,7 +94,7 @@ describe('As an user when I navigate to', function() {
 
         });
 
-        it('be able to delete supplements', function () {
+        it('I am able to delete supplements', function () {
 
             supplementsPO.removeFirstSupplement();
 
@@ -102,13 +102,13 @@ describe('As an user when I navigate to', function() {
 
         });
 
-        it('see an edit button if I clicked on Edit Supplement', function () {
+        it('an edit button shows if I clicked on Edit Supplement', function () {
 
-
+//            supplementPO.getSave
 
         });
 
-        it('see an add button if I clicked on Add Supplement', function () {
+        it('an add button shows if I clicked on Add Supplement', function () {
 
 
 
