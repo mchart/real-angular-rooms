@@ -1,7 +1,8 @@
 <!doctype html>
 <html ng-app="ngRooms">
 <head>
-    <title>ngRooms.com</title>
+
+	<title>ngRooms.com</title>
 
     <!-- build:css //maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -13,7 +14,7 @@
 		<div class="container"> 
 			<div class="row">
 				<div class="col-md-8 text-center">
-					<h1>Angular Rooms Extranet Navigation</h1>
+					<h1><a href go-to-home>Angular Rooms Extranet Navigation</a></h1>
 			        <b>RATES & AVAILABILITY</b> 
 			    </div>
 			    <div class="col-md-4 text-center" ng-controller="AuthenticationController">
@@ -68,6 +69,8 @@
 		<!-- build:js js/app.js -->
 		<script src="app.js"></script>
 		<script src="common/common.js"></script>
+		<script src="common/directives/goToHome.js"></script>
+		<script src="common/directives/backButton.js"></script>
 		<script src="common/security/accountService.js"></script>
 		<script src="common/security/authenticationController.js"></script>	
 		<script src="domain/domain.js"></script>

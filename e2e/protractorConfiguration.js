@@ -4,8 +4,8 @@ exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
-        'specs/suppl*.js',//testing only supplements
-        'specs/cancellation*.js' //testing only cancellationPolicies
+        'supplements/suppl*.js',//testing supplements
+        'cancellationPolicies/cancellation*.js' //testing cancellationPolicies
 
     ],
 

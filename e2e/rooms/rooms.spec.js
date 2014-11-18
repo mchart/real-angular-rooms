@@ -1,6 +1,6 @@
 'use strict';
 
-var roomsPage = require('../pageObjects/roomsPage');
+var roomsPage = require('rooms.po.js');
 var dbAdmin = require('rooms-db-setup');
 var db = require('rooms-db-query');
 
@@ -34,7 +34,7 @@ describe('As a owner', function() {
         var done = false;
         db.rooms.storeList(rooms, function(err, result) {
             console.log('Performed seeding');
-            roomsPage.navigate();
+            rooms.navigate();
             done = true;
         });
 
@@ -44,29 +44,29 @@ describe('As a owner', function() {
     });
 
     it('I should see the rooms', function() {
-      	var roomList = roomsPage.getListOfRooms();
+      	var roomList = rooms.getListOfRooms();
       	expect(roomList.count()).toBe(rooms.length);
 
     });
 
     it('I should be able to delete the first room', function() {
 
-      	roomsPage.deleteRoomAtRow(0);
+      	rooms.deleteRoomAtRow(0);
 
-      	var roomList = roomsPage.getListOfRooms();
+      	var roomList = rooms.getListOfRooms();
       	expect(roomList.count()).toBe(rooms.length - 1);
     });
 
     it('I should be able to go to edit room feature', function() {
 
-        roomsPage.editRoomAtRow(0)
+        rooms.editRoomAtRow(0)
 
         expect(browser.getCurrentUrl()).toContain('/rooms/edit/1');
     });
 
     it('I should be able to go to the new room feature', function() {
 
-        roomsPage.newRoom.click()
+        rooms.newRoom.click()
 
         expect(browser.getCurrentUrl()).toContain('/rooms/new');
     });

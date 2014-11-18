@@ -17,12 +17,15 @@ angular.module('ngRooms.domain.cancellationPolicy')
 
 	$scope.navigateToNavigationPoliciesNew = function(){
 		$location.path('/cancellationPolicies/new');
-	}
-
+	};
 
 	$scope.navigateToNavigationPoliciesEdit = function(id){
 		$location.path('/cancellationPolicies/edit/' + id);
-	}
+	};
+
+	$scope.navigateToNavigationPoliciesEdit = function(id){
+		$location.path('/cancellationPolicies/edit/' + id);
+	};
 
 	$scope.populateCancellationPoliciesTable();
 

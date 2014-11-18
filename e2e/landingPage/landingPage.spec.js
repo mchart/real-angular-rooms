@@ -1,6 +1,6 @@
 'use strict';
 
-var landingPage = require('../pageObjects/landingPagePage');
+var landingPage = require('landingPage.po.js');
 
 describe('As a client', function () {
 
