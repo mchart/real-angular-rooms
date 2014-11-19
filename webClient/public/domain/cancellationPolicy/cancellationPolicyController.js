@@ -7,12 +7,18 @@ angular.module('ngRooms.domain.cancellationPolicy', [])
 
                     cancellationPolicyService.single(id).then(function(data){
                         $scope.cancellationPolicy = data;
+                        $scope.editing = id ? true : false;
                     });
 
             };
 
             $scope.addCancellationPolicy = function() {
-                cancellationPolicyService.add($scope.name, $scope.description).then(function(){
+                var cp = {
+                    type: 'cancellationPolicy',
+                    name: $scope.cancellationPolicy.name,
+                    description: $scope.cancellationPolicy.description
+                };
+                cancellationPolicyService.add(cp).then(function(){
                     $location.path('/cancellationPolicies');
                 });
             };

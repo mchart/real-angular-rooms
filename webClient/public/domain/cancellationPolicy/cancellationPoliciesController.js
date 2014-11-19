@@ -1,7 +1,7 @@
 angular.module('ngRooms.domain.cancellationPolicy')
 	.controller('CancellationPoliciesController',
-	['$scope', '$routeParams','$location', 'CancellationPolicyService',
-	function($scope, $routeParams, $location, cancellationPolicyService){
+	['$scope', '$location', 'CancellationPolicyService',
+	function($scope, $location, cancellationPolicyService){
 
 	$scope.populateCancellationPoliciesTable = function(){
 		cancellationPolicyService.list().then(function(data){
@@ -17,10 +17,6 @@ angular.module('ngRooms.domain.cancellationPolicy')
 
 	$scope.navigateToNavigationPoliciesNew = function(){
 		$location.path('/cancellationPolicies/new');
-	};
-
-	$scope.navigateToNavigationPoliciesEdit = function(id){
-		$location.path('/cancellationPolicies/edit/' + id);
 	};
 
 	$scope.navigateToNavigationPoliciesEdit = function(id){

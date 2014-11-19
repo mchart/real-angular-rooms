@@ -15,14 +15,8 @@ angular.module('ngRooms.domain.cancellationPolicy')
 			return restangular.one(domain, id).remove();
 		},
 
-		add: function(name, description){
-			var cp = {
-				type: "cancellationPolicy",
-				name: name,
-				description: description
-			}
-
-			return restangular.all(domain + '/new').post(cp);
+		add: function(cancellationPolicy){
+			return restangular.all(domain + '/new').post(cancellationPolicy);
 		},
 
 		edit: function(id, name, description){
