@@ -13,7 +13,7 @@
     <tr ng-repeat="supplement in supplements">
         <td>{{ supplement.id }}</td>
         <td>{{ supplement.name }}</td>
-        <td>{{ supplement.price }}</td>
+        <td>{{ supplement.price | currency:'£':2}}</td>
         <td>
             <a ng-click="gotoEditSupplement(supplement.id)" id="btnSupplementDetails" class="btn btn-primary" href="#">
                 <i class="glyphicon glyphicon-pencil"></i>
