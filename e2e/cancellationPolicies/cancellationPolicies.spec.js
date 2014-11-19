@@ -1,5 +1,6 @@
 'use strict';
 
+var cancellationPolicyPage = require('./cancellationPolicy.po.js');
 var cancellationPoliciesPage = require('./cancellationPolicies.po.js');
 
 describe('As a owner', function() {
@@ -20,7 +21,7 @@ describe('As a owner', function() {
         });
 
         function beInside(firstCancellationPolicy) {
-            var editedCancellationPolicy = cancellationPoliciesPage.getEditedCancellationPolicyDetails();
+            var editedCancellationPolicy = cancellationPolicyPage.getEditedCancellationPolicyDetails();
             expect(firstCancellationPolicy.sid).toBe(editedCancellationPolicy.sid);
             expect(firstCancellationPolicy.sname).toBe(editedCancellationPolicy.sname);
             expect(firstCancellationPolicy.sdescription).toBe(editedCancellationPolicy.sdescription);
@@ -28,12 +29,13 @@ describe('As a owner', function() {
 
         function changeCancellationPolicyDetails(NEW_DETAILS) {
             cancellationPoliciesPage.navigateToFirstCancellationPolicy();
-            cancellationPoliciesPage.editCancellationPolicy(NEW_DETAILS.name, NEW_DETAILS.description);
-            cancellationPoliciesPage.saveEditedCancellationPolicyAndNavigateBackToCancellationPolicies();
+            cancellationPolicyPage.editCancellationPolicy(NEW_DETAILS.name, NEW_DETAILS.description);
+            cancellationPolicyPage.saveEditedCancellationPolicyAndNavigateBackToCancellationPolicies();
         }
 
         function firstCancellationPolicyHas(NEW_DETAILS) {
             var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
+
             expect(firstCancellationPolicy.sname).toBe(NEW_DETAILS.name);
             expect(firstCancellationPolicy.sdescription).toBe(NEW_DETAILS.description);
         }
@@ -43,7 +45,9 @@ describe('As a owner', function() {
         });
 
         it('I should be able to add cancellationPolicies', function () {
-            cancellationPoliciesPage.addCancellationPolicy();
+
+            cancellationPolicyPage.addCancellationPolicy();
+
             expect(cancellationPoliciesPage.getNoOfCancellationPolicies()).toBe(cancellationPoliciesBefore + 1);
         });
 
@@ -54,7 +58,6 @@ describe('As a owner', function() {
         it('can access the details of the first cancellationPolicy', function () {
 
             var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
-
             cancellationPoliciesPage.navigateToFirstCancellationPolicy();
 
             beInside(firstCancellationPolicy);
