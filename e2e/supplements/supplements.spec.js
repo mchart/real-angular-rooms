@@ -114,6 +114,25 @@ describe('As an user when I navigate to', function() {
 
         });
 
+        it('I should be able to sort supplements by name', function () {
+
+
+
+        });
+
+        it('I can go back by pressing the button back', function () {
+
+
+
+        });
+
+        it('I can go to the landing page by pressing home button', function () {
+
+
+
+        });
+
+
     });
 
 });
