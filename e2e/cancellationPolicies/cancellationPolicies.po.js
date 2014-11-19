@@ -2,7 +2,8 @@ var request = require('request');
 
 cancellationPoliciesPage = function () {
 
-    var me = this;
+    var me = this,
+        theRepeater = 'cancellationPolicy in cancellationPolicies';
 
     me.navigateToCancellationPolicies = function() {
         browser.get('/cancellationPolicies');
@@ -17,33 +18,35 @@ cancellationPoliciesPage = function () {
     };
 
     me.getNoOfCancellationPolicies = function () {
-        return element.all(by.repeater('cancellationPolicy in cancellationPolicies')).count();
+        return me.getAllElements(theRepeater).count();
     };
 
-    me.getCancellationPolicies = function() {
-        return element.all(by.repeater('cancellationPolicy in cancellationPolicies'));
+    me.getAllElements = function(theRepeater) {
+        return element.all(by.repeater(theRepeater));
     };
     
+    me.getElementById = function(theElement, theId){
+        return theElement.element(by.id(theId));
+    };
+
+    me.getElementByBinding = function(theElement, theBinding){
+        return theElement.element(by.binding(theBinding));
+    };
+
+    me.getFirstElement = function () {
+        return me.getAllElements(theRepeater).first();
+    };
+
     me.removeFirstCancellationPolicy = function() {
-        element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first().element(by.id('btnRemoveCancellationPolicy')).click();
-    };
-
-
-    me.getFirstCancellationPolicyDetails = function () {
-        var firstElement = element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();
-        var firstCancellationPolicyDetails = {};
-        firstCancellationPolicyDetails.sid = firstElement.element(by.binding('cancellationPolicy.id')).getText();
-        firstCancellationPolicyDetails.sname = firstElement.element(by.binding('cancellationPolicy.name')).getText();
-        firstCancellationPolicyDetails.sdescription = firstElement.element(by.binding('cancellationPolicy.description')).getText();
-        return firstCancellationPolicyDetails;
-    };
-
-    me.getFirstCancellationPolicy = function () {
-        return element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first();
+        var firstElement = me.getFirstElement();
+        var removeButton = me.getElementById(firstElement, 'btnRemoveCancellationPolicy');
+        removeButton.click();
     };
 
     me.navigateToFirstCancellationPolicy = function () {
-        element.all(by.repeater('cancellationPolicy in cancellationPolicies')).first().element(by.id('btnEditCancellationPolicy')).click();
+        var firstElement = me.getFirstElement();
+        var editButton = me.getElementById(firstElement, 'btnEditCancellationPolicy');
+        editButton.click();
     };
 
 };

@@ -14,7 +14,7 @@ describe('As a owner', function() {
 
         beforeEach(function () {
             cancellationPoliciesPage.navigateToCancellationPolicies();
-            cancellationPolicies = cancellationPoliciesPage.getCancellationPolicies();
+            cancellationPolicies = cancellationPoliciesPage.getAllElements('cancellationPolicy in cancellationPolicies');
             cancellationPolicies.count().then(function(initialCount){
                 cancellationPoliciesBefore = initialCount
             })
@@ -34,11 +34,20 @@ describe('As a owner', function() {
         }
 
         function firstCancellationPolicyHas(NEW_DETAILS) {
-            var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
+            var firstCancellationPolicy = getFirstCancellationPolicyDetails();
 
             expect(firstCancellationPolicy.sname).toBe(NEW_DETAILS.name);
             expect(firstCancellationPolicy.sdescription).toBe(NEW_DETAILS.description);
         }
+
+        function getFirstCancellationPolicyDetails () {
+            var theElement =  cancellationPoliciesPage.getFirstElement();
+            var details = {};
+            details.sid = cancellationPoliciesPage.getElementByBinding(theElement, 'cancellationPolicy.id').getText();
+            details.sname = cancellationPoliciesPage.getElementByBinding(theElement, 'cancellationPolicy.name').getText();
+            details.sdescription = cancellationPoliciesPage.getElementByBinding(theElement, 'cancellationPolicy.description').getText();
+            return details;
+        };
 
         it('I should be in the cancellationPolicies page', function () {
             expect(cancellationPoliciesPage.getSubPage()).toBe('Cancellation policies available');
@@ -57,7 +66,7 @@ describe('As a owner', function() {
 
         it('can access the details of the first cancellationPolicy', function () {
 
-            var firstCancellationPolicy = cancellationPoliciesPage.getFirstCancellationPolicyDetails();
+            var firstCancellationPolicy = getFirstCancellationPolicyDetails();
             cancellationPoliciesPage.navigateToFirstCancellationPolicy();
 
             beInside(firstCancellationPolicy);
@@ -73,6 +82,7 @@ describe('As a owner', function() {
 
         it('be able to delete cancellationPolicies', function () {
             cancellationPoliciesPage.removeFirstCancellationPolicy();
+
             expect(cancellationPoliciesPage.getNoOfCancellationPolicies()).toBe(cancellationPoliciesBefore - 1);
 
         });
