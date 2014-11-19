@@ -1,4 +1,4 @@
-angular.module('ngRooms.domain.supplements', [])
+angular.module('ngRooms.domain.supplement')
     .controller('SupplementsController',
         ['$scope', '$location', 'SupplementService',
             function($scope, $location, supplementService) {
