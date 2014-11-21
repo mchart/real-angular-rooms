@@ -29,10 +29,12 @@ supplementsPage = function () {
 
     me.getFirstSupplementDetails = function () {
         var firstElement = element.all(by.repeater('supplement in supplements')).first();
-        var firstSupplementDetails = {};
-        firstSupplementDetails.sid = firstElement.element(by.binding('supplement.id')).getText();
-        firstSupplementDetails.sname = firstElement.element(by.binding('supplement.name')).getText();
-        firstSupplementDetails.sprice = firstElement.element(by.binding('supplement.price')).getText();
+        var firstSupplementDetails = {
+            id : firstElement.element(by.binding('supplement.id')),
+            name : firstElement.element(by.binding('supplement.name')),
+            price : firstElement.element(by.binding('supplement.price'))
+        };
+
         return firstSupplementDetails;
     };
 

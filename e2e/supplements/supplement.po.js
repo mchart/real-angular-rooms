@@ -15,11 +15,14 @@ supplementsPage = function () {
 
     me.getSupplementDetails = function() {
         var supplementDetails = {};
-        supplementDetails.sid = element(by.binding('su.id')).getText();
-        supplementDetails.sname = element(by.id('name')).getAttribute('value');
-        supplementDetails.sprice = element(by.id('price')).getAttribute('value');
+        supplementDetails.id = element(by.binding('su.id')); //element(by.binding('su.id')).getText();
+        supplementDetails.name = element(by.id('name'));
+        supplementDetails.price = element(by.id('price'));
         return supplementDetails;
     };
+
+    //model('su.price')).;
+    //id('su.price')).getAttribute('value');
 
     me.editSupplement = function (name, price) {
         var sname = element(by.id('name'));
