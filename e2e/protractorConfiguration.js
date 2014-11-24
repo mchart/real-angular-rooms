@@ -4,9 +4,9 @@ exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
-        'rooms/room*.js'//,//testing supplements
-        //'supplements/suppl*.js',//testing supplements
-        //'cancellationPolicies/cancellation*.js' //testing cancellationPolicies
+        'supplements/suppl*.js',//testing supplements
+        'cancellationPolicies/cancellation*.js', //testing cancellationPolicies
+        'rooms/room*.js'//testing supplements
 
     ],
 

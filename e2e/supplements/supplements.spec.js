@@ -1,4 +1,4 @@
-'use strict';
+    'use strict';
 
 var supplementsPO = require('./supplements.po.js');
 var supplementPO = require('./supplement.po.js');
@@ -22,30 +22,24 @@ var flushAndSeed = function() {
     var done = false;
 
     dbAdmin.flush(function() {
-        done = true;
+        db.supplements.storeList(supplements, function(err, result) {
+            console.log('Performed seeding');
+            supplementsPO.navigateToSupplements();
+            done = true;
+        });
     });
 
     waitsFor(function(){
         return done;
     }, couchTimeout);
 };
-flushAndSeed();
 
 describe('As a user when I navigate to', function() {
 
     describe("the supplements page", function() {
 
         beforeEach(function() {
-            var done = false;
-            db.supplements.storeList(supplements, function(err, result) {
-                console.log('Performed seeding');
-                supplements.navigateToSupplements();
-                done = true;
-            });
-
-            waitsFor(function(){
-                return done;
-            }, couchTimeout);
+            flushAndSeed();
         });
 
         it('I am in the supplements page', function () {
@@ -88,7 +82,7 @@ describe('As a user when I navigate to', function() {
 
         it('an edit button shows if I clicked on Edit Supplement', function () {
 
-//            supplementPO.getSave
+            //supplementPO
 
         });
 
@@ -137,8 +131,8 @@ describe('As a user when I navigate to', function() {
 
         function checkfirstSupplementHas() {
             var firstSupplement = supplementsPO.getFirstSupplementDetails();
-            expect(firstSupplement.name).toBe(EDIT_SUPPLEMENT_DETAILS.name);
-            expect(firstSupplement.price).toBe('£' + EDIT_SUPPLEMENT_DETAILS.price);
+            expect(firstSupplement.name.getText()).toBe(EDIT_SUPPLEMENT_DETAILS.name);
+            expect(firstSupplement.price.getText()).toBe('£' + EDIT_SUPPLEMENT_DETAILS.price);
         }
 
     });
