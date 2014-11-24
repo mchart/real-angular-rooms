@@ -15,6 +15,7 @@
         "request": "2.44.0",
         "request-promise": "0.2.0",
         "couchbase": "2.0.0-dp1",
+        "guid":"latest",
         "rooms-db-setup": "x",
         "rooms-db-query": "x"
     },

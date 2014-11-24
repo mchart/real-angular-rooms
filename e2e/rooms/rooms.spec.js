@@ -1,6 +1,6 @@
 'use strict';
 
-var roomsPage = require('rooms.po.js');
+var roomsPage = require('./rooms.po.js');
 var dbAdmin = require('rooms-db-setup');
 var db = require('rooms-db-query');
 
@@ -24,6 +24,7 @@ var flushAndSeed = function() {
         return done;
     }, couchTimeout);
 };
+
 flushAndSeed();
 
 describe('As a owner', function() {
@@ -34,7 +35,7 @@ describe('As a owner', function() {
         var done = false;
         db.rooms.storeList(rooms, function(err, result) {
             console.log('Performed seeding');
-            rooms.navigate();
+            roomsPage.navigate();
             done = true;
         });
 

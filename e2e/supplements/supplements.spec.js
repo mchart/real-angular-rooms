@@ -4,10 +4,12 @@ var supplementsPO = require('./supplements.po.js');
 var supplementPO = require('./supplement.po.js');
 var dbAdmin = require('rooms-db-setup');
 var db = require('rooms-db-query');
+var Guid = require('guid');
 
 var couchTimeout = 60 * 1000;  // couch might need a long time before flushing
 
-var Guid = require('guid');
+var NEW_SUPPLEMENT_DETAILS = { name : 'Massage', price : '21.00'};
+var EDIT_SUPPLEMENT_DETAILS = { name : 'SupplementEdited', price : '42.00'};
 
 var supplements = [
     { id: Guid.create(), type: 'supplement',  name: "Wi-fi",    price: "2.99" },
@@ -33,17 +35,11 @@ describe('As a user when I navigate to', function() {
 
     describe("the supplements page", function() {
 
-        var supplements,
-            supplementsBefore;
-
-        var NEW_SUPPLEMENT_DETAILS = { name : 'Massage', price : '21.00'};
-        var EDIT_SUPPLEMENT_DETAILS = { name : 'SupplementEdited', price : '42.00'};
-
         beforeEach(function() {
             var done = false;
             db.supplements.storeList(supplements, function(err, result) {
                 console.log('Performed seeding');
-                supplementsPO.navigateToSupplements();
+                supplements.navigateToSupplements();
                 done = true;
             });
 
@@ -74,54 +70,7 @@ describe('As a user when I navigate to', function() {
 
         });
 
-        iit('I can access the details of the first supplement by clicking edit supplement', function () {
-
-//            var promisedFirstSupplement = supplementsPO.getFirstSupplementDetails()
-//            var supplement = {};
-//            var done = false;
-//
-//            promisedFirstSupplement.id.getText().then( function (value) {
-//                supplement.id = value;
-//            })
-//                .then(function() {
-//                    promisedFirstSupplement.name.getText().then( function (value) {
-//                        supplement.name = value;
-//                    })
-//                        .then(function() {
-//                            promisedFirstSupplement.price.getText().then( function (value) {
-//                                supplement.price = value;
-//                            })
-//                                .then(function() {
-//                                    expect(supplement.price).toBe('before supplement.price')
-//                                    expect(supplement.name).toBe('before supplement.name')
-//                                    expect(supplement.id).toBe('before supplement.id')
-//                                    done = true;
-//                                })
-//                        })
-//                })
-//            ;
-//
-//            waitsFor(function(){
-//                return done;
-//            }, 3000)
-//
-//            supplementsPO.navigateToFirstSupplement();
-//
-//            expect(whereAmI()).toBe('Supplement');
-//
-//            var thisSupplement = supplementPO.getSupplementDetails();
-//
-//            expect(supplement.price).toBe('after waitsFor supplement.price')
-//            expect(supplement.name).toBe('after waitsFor supplement.name')
-//            expect(supplement.id).toBe('after waitsFor supplement.id')
-//
-//            expect(thisSupplement.id.getText()).toBe('thissupp.id')
-//            expect(thisSupplement.name.getAttribute('value')).toBe('thissupp.name');
-//            expect(thisSupplement.price.getAttribute('value')).toBe('thissupp.price');
-
-        });
-
-        it('I can access a supplement, change its details and it will show up in the supplement list', function () {
+        it('I can access a supplement and change its details', function () {
 
             changeSupplementDetails();
 
