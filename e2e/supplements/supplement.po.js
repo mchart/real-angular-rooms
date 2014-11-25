@@ -14,10 +14,12 @@ supplementsPage = function () {
     }
 
     me.getSupplementDetails = function() {
-        var supplementDetails = {};
-        supplementDetails.id = element(by.binding('su.id')); //element(by.binding('su.id')).getText();
-        supplementDetails.name = element(by.id('name'));
-        supplementDetails.price = element(by.id('price'));
+        var supplementDetails = {
+            id : element(by.binding('su.id')),
+            name : element(by.model('su.name')),
+            price : element(by.model('su.price'))
+
+        };
         return supplementDetails;
     };
 
@@ -25,11 +27,11 @@ supplementsPage = function () {
     //id('su.price')).getAttribute('value');
 
     me.editSupplement = function (name, price) {
-        var sname = element(by.id('name'));
+        var sname = element(by.model('su.name'));
         sname.clear();
         sname.sendKeys(name);
 
-        var sprice = element(by.id('price'));
+        var sprice = element(by.model('su.price'));
         sprice.clear();
         sprice.sendKeys(price);
     }

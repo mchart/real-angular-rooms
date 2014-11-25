@@ -6,7 +6,7 @@ exports.config = {
     specs: [
         'supplements/suppl*.js',//testing supplements
         'cancellationPolicies/cancellation*.js', //testing cancellationPolicies
-        'rooms/room*.js'//testing supplements
+        'rooms/room*.js'//testing rooms
 
     ],
 
