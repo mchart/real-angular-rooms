@@ -105,7 +105,7 @@ var flushAndSeed = function() {
 
         });
 
-        iit('I should be able to sort supplements by name', function () {
+        it('I should be able to sort supplements by name', function () {
 
             supplementsPO.sortByPrice();
 
@@ -113,9 +113,13 @@ var flushAndSeed = function() {
 
         });
 
-        it('I can go back by pressing the button back', function () {
+        iit('I can go back by pressing the button back', function () {
 
+            supplementsPO.navigateToNewSupplement();
 
+            supplementPO.navigateBack();
+
+            expect(whereAmI()).toBe('Supplements');
 
         });
 

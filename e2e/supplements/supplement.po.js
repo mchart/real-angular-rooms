@@ -40,6 +40,10 @@ supplementsPage = function () {
         sprice.sendKeys(price);
     };
 
+    me.navigateBack = function () {
+        element(by.id('back')).click()
+    }
+
 };
 
 module.exports = new supplementsPage();
