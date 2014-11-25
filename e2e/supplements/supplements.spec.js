@@ -113,7 +113,7 @@ var flushAndSeed = function() {
 
         });
 
-        iit('I can go back by pressing the button back', function () {
+        it('I can go back by pressing the button back', function () {
 
             supplementsPO.navigateToNewSupplement();
 
@@ -123,9 +123,13 @@ var flushAndSeed = function() {
 
         });
 
-        it('I can go to the landing page by pressing home button', function () {
+        iit('I can go to the landing page by pressing home button', function () {
 
+            supplementsPO.navigateToNewSupplement();
 
+            supplementPO.navigateHome();
+
+            expect(whereAmI()).toBe('Rooms');
 
         });
 

@@ -44,6 +44,10 @@ supplementsPage = function () {
         element(by.id('back')).click()
     }
 
+    me.navigateHome = function () {
+        element(by.id('homeButton')).click()
+    }
+
 };
 
 module.exports = new supplementsPage();
