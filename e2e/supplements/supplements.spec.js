@@ -15,7 +15,7 @@ var supplements = [
     { id: '2a8627ee-0b59-e32e-1fc4-80eb59609d07', type: 'supplement',  name: "Wi-fi",    price: "2.99" },
     { id: '53235c7a-5e2e-4b39-6592-643c931353c7', type: 'supplement',  name: "Breakfast",price: "5.99" },
     { id: '88ac6d7c-257c-c85e-4e40-ababd913d160', type: 'supplement',  name: "Dinner",   price: "7.99" },
-    { id: 'acc7e0b7-6e8a-62a8-49bb-9cb1e6f0dc08', type: 'supplement',  name: "Sauna",    price: "4.99" },
+    { id: 'acc7e0b7-6e8a-62a8-49bb-9cb1e6f0dc08', type: 'supplement',  name: "Sauna",    price: "1.99" },
     { id: 'f7ba97e3-94a4-fb97-6f4e-106b2e72bede', type: 'supplement',  name: "Gym",      price: "3.99" }];
 
 var flushAndSeed = function() {
@@ -105,9 +105,11 @@ var flushAndSeed = function() {
 
         });
 
-        it('I should be able to sort supplements by name', function () {
+        iit('I should be able to sort supplements by name', function () {
 
+            supplementsPO.sortByPrice();
 
+            checkSortByPriceDescendingWorks();
 
         });
 
@@ -156,6 +158,10 @@ var flushAndSeed = function() {
             expect(thisSupplement.id.getText()).toBe(supplements[0].id);
             expect(thisSupplement.name.getAttribute('value')).toBe(supplements[0].name);
             expect(thisSupplement.price.getAttribute('value')).toBe(supplements[0].price);
+        }
+
+        function checkSortByPriceDescendingWorks() {
+            expect(supplementsPO.getFirstSupplementDetails().price.getText()).toBe('£7.99')
         }
 
     });

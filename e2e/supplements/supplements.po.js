@@ -38,6 +38,10 @@ supplementsPage = function () {
         return firstSupplementDetails;
     };
 
+    me.sortByPrice = function () {
+        element(by.id('sortByPrice')).click();
+    }
+
 };
 
 module.exports = new supplementsPage();
