@@ -91,13 +91,17 @@ var flushAndSeed = function() {
 
         it('an edit button shows if I clicked on Edit Supplement', function () {
 
-            //supplementPO
+            supplementsPO.navigateToFirstSupplement();
+
+            expect(element(by.id('btnSaveChangesToSupplement')).isPresent()).toBe(true);
 
         });
 
         it('an add button shows if I clicked on Add Supplement', function () {
 
+            supplementsPO.navigateToNewSupplement();
 
+            expect(element(by.id('btnSaveNewSupplement')).isPresent()).toBe(true);
 
         });
 
@@ -125,7 +129,7 @@ var flushAndSeed = function() {
 
         function addNewSupplement() {
             supplementPO.addSupplement(NEW_SUPPLEMENT_DETAILS.name, NEW_SUPPLEMENT_DETAILS.price);
-            supplementPO.saveNewSupplement();
+            supplementPO.getNewSupplementButton().click();
         }
 
         function supplementsListHasAtLeastOneSupplement() {
@@ -135,7 +139,7 @@ var flushAndSeed = function() {
         function changeSupplementDetails() {
             supplementsPO.navigateToFirstSupplement();
             supplementPO.editSupplement(EDIT_SUPPLEMENT_DETAILS.name, EDIT_SUPPLEMENT_DETAILS.price);
-            supplementPO.saveChangesOnSupplement();
+            supplementPO.getEditSupplementButton().click();
         }
 
         function checkfirstSupplementHas() {

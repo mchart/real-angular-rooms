@@ -9,9 +9,13 @@ supplementsPage = function () {
         element(by.id('price')).sendKeys(price);
     };
 
-    me.saveNewSupplement = function () {
-        element(by.id('btnSaveNewSupplement')).click();
-    }
+    me.getNewSupplementButton = function () {
+        element(by.id('btnSaveNewSupplement'));
+    };
+
+    me.getEditSupplementButton = function () {
+        element(by.id('btnSaveChangesToSupplement'));
+    };
 
     me.getSupplementDetails = function() {
         var supplementDetails = {
@@ -34,10 +38,6 @@ supplementsPage = function () {
         var sprice = element(by.model('su.price'));
         sprice.clear();
         sprice.sendKeys(price);
-    }
-
-    me.saveChangesOnSupplement = function () {
-        element(by.id('btnSaveChangesToSupplement')).click();
     };
 
 };
