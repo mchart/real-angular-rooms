@@ -129,7 +129,7 @@ var flushAndSeed = function() {
 
         function addNewSupplement() {
             supplementPO.addSupplement(NEW_SUPPLEMENT_DETAILS.name, NEW_SUPPLEMENT_DETAILS.price);
-            supplementPO.getNewSupplementButton().click();
+            supplementPO.clickNewSupplementButton();
         }
 
         function supplementsListHasAtLeastOneSupplement() {
@@ -139,7 +139,7 @@ var flushAndSeed = function() {
         function changeSupplementDetails() {
             supplementsPO.navigateToFirstSupplement();
             supplementPO.editSupplement(EDIT_SUPPLEMENT_DETAILS.name, EDIT_SUPPLEMENT_DETAILS.price);
-            supplementPO.getEditSupplementButton().click();
+            supplementPO.clickEditSupplementButton();
         }
 
         function checkfirstSupplementHas() {

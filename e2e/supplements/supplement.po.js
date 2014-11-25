@@ -9,12 +9,12 @@ supplementsPage = function () {
         element(by.id('price')).sendKeys(price);
     };
 
-    me.getNewSupplementButton = function () {
-        element(by.id('btnSaveNewSupplement'));
+    me.clickNewSupplementButton = function () {
+        element(by.id('btnSaveNewSupplement')).click();
     };
 
-    me.getEditSupplementButton = function () {
-        element(by.id('btnSaveChangesToSupplement'));
+    me.clickEditSupplementButton = function () {
+        element(by.id('btnSaveChangesToSupplement')).click();
     };
 
     me.getSupplementDetails = function() {
