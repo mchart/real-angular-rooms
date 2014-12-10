@@ -9,15 +9,15 @@
     "Ramon Antunez <ramon.antunez@valtech.co.uk>"
   ],
   "dependencies": {
-    "bunyan":"latest",
+    "bunyan": "latest",
     "couchbase": "2.0.0-dp1",
-    "guid": "0.0.12",
+    "guid": "latest",
     "jwt-simple": "0.2.0",
     "moment": "2.8.3",
+    "nodemon": "^1.2.1",
     "request": "2.45.0",
     "restify": "2.8.2",
     "rooms-db-query": "x",
-    "guid":"latest",
     "start-stop-daemon": "0.1.0"
   },
   "scripts": {

@@ -31,6 +31,14 @@ module.exports = function(query){
         });
     };
 
+    query.rooms.getSingle = function(id, callbackWithSingleRoom) {
+        db.get(id, function(err, result) {
+            var room = result.value;
+
+            callbackWithSingleRoom(room);
+        })
+    }
+
     query.rooms.store = function(room, callback) {
         db.set(getRoomKey(room), room, callback);
     };

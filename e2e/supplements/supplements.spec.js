@@ -123,7 +123,7 @@ var flushAndSeed = function() {
 
         });
 
-        iit('I can go to the landing page by pressing home button', function () {
+        it('I can go to the landing page by pressing home button', function () {
 
             supplementsPO.navigateToNewSupplement();
 
